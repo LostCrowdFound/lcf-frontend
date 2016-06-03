@@ -1,0 +1,24 @@
+npm-debug.log*
+
+# Dependency directory
+# https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
+/node_modules/
+/bower_components/
+
+# generated files
+
+/app/sass/libs/
+/public/js/app.js
+/public/js/templates.js
+/public/libs/
+/public/css/
+
+# MacOS X temp files
+*~
+.DS_Store
+
+# WebStorm project
+.idea
+
+# Others
+!.gitkeep
