@@ -1,10 +1,8 @@
-<div class="container">
+<div class="container" ng-controller="LostitemCtrl as vm">
     <div class="row">
             <h2>I lost an item.</h2>
 
-            <form name="form" ng-submit="search()" role="form" ng-controller="LostitemCtrl">
-                <p class="bg-danger" ng-show="errorText">{{errorText}}</p>
-                <p class="bg-success" ng-show="successText">{{successText}}</p>
+            <form name="form" ng-submit="search()" role="form">
                 <div class="form-group" ng-class="{ 'has-error': form.type.$dirty && form.type.$error.required }">
                     <label for="type">Type</label>
                     <input type="text" name="type" id="type" class="form-control" ng-model="type" required />
@@ -17,6 +15,12 @@
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" class="form-control" ng-model="name" required />
                 </div>
+                <div class="form-group">
+                    <label for="map">Specify the position where you lost your valuable.<br>Adjust the circle to fit the position by dragging it around and adjusting the radius size.</label>
+                    <ng-map zoom="11" center="current-position" name="map">
+                        <shape id="circle" name="circle" centered="true" stroke-color='#FF0000' stroke-opacity="0.8"stroke-weight="2" center="current-position" on-edit="vm.area()" radius="{{vm.radius}}" editable="true"></shape>
+                    </ng-map>
+                </div>  
                 <div class="form-actions">
                     <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Search</button>
                     <a href="#/" class="btn btn-link">Cancel</a>
@@ -25,9 +29,7 @@
 
     </div> 
     <div class="row">
-            <ng-map zoom="11" center="[48.138370, 11.578553]">
-                <shape id="circle" name="circle" centered="true" stroke-color='#FF0000' stroke-opacity="0.8"stroke-weight="2" center="current-position" radius="{{vm.radius}}" editable="true"></shape>
-           </ng-map>
+        
     </div>
     <div class="row">
         <div ng-repeat="item in items">
@@ -35,5 +37,4 @@
         </div>
     </div>
 
-    </div>
 </div>
