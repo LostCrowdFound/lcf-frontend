@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label for="foundMap">Where did you find it? Specify the location by dragging the marker around.</label>
-                <ng-map zoom="11" center="current-position" name="foundMap">
+                <ng-map zoom="11" center="current-position" name="foundMap" street-view-control="false">
                     <marker centered="true" draggable="true" " position="{{vm.lat}}, {{vm.lon}}" on-dragend="vm.pos()"></marker>
                 </ng-map>
             </div>

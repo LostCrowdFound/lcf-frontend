@@ -17,8 +17,8 @@
                 </div>
                 <div class="form-group">
                     <label for="map">Specify the position where you lost your valuable.<br>Adjust the circle to fit the position by dragging it around and adjusting the radius size.</label>
-                    <ng-map zoom="11" center="current-position" name="map">
-                        <shape id="circle" name="circle" centered="true" stroke-color='#FF0000' stroke-opacity="0.8"stroke-weight="2" center="current-position" on-edit="vm.area()" radius="{{vm.radius}}" editable="true"></shape>
+                    <ng-map zoom="11" center="current-position" name="map" street-view-control="false">
+                        <shape id="circle" name="circle" centered="true" stroke-color='#FF0000' stroke-opacity="0.8"stroke-weight="2" center="current-position" on-center_changed="vm.centerChanged()" on-radius_changed="vm.radiusChanged()" radius="{{vm.radius}}" editable="true"></shape>
                     </ng-map>
                 </div>  
                 <div class="form-actions">

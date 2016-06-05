@@ -17,13 +17,16 @@
         this.searchItems = searchItems;
         this.addItem = addItem;
 
-        function searchItems (type, brand, name) {
+        function searchItems (type, brand, name, lat, lon, radius) {
         	return $http.get(BASEURL + '/api/items', {
             	params: {
-                type: type,
-                brand: brand,
-                name: name
-        		  }
+                    type: type,
+                    brand: brand,
+                    name: name,
+                    lat: lat,
+                    lon: lon,
+                    radius: radius
+        		}
         	});
         }
 

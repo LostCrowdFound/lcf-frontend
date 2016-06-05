@@ -21,17 +21,15 @@ angular.module('lostcrowdfoundApp')
     vm.lat = 48.138370;
     vm.lon = 11.578553;
 
-    vm.area = function(event) {
-      var pos = this.getPosition();
+    vm.radiusChanged = function(event) {
+      vm.radius = this.getRadius();
+    }
+
+    vm.centerChanged = function(event) {
+      var pos = this.getCenter();
 
       vm.lon = pos.lng();
       vm.lat = pos.lat();
-
-      ngToast.create({
-        className: 'success',
-        dismissOnClick: true,
-        content: 'Successfully added your item to our database!',
-      });
     }
 
 
@@ -45,7 +43,7 @@ angular.module('lostcrowdfoundApp')
 
 
   	function search() {
-  		itemsService.searchItems($scope.type, $scope.brand, $scope.name)
+  		itemsService.searchItems($scope.type, $scope.brand, $scope.name, vm.lat, vm.lon, vm.radius)
         .then(function (response) {
           $scope.items = response.data;
         }, function (response) {
