@@ -1,8 +1,8 @@
-<div class="col-md-6 col-md-offset-3">
+<div class="container">
     <h2>Register</h2>
 
     <form name="form" ng-submit="register()" role="form" ng-controller="RegisterCtrl">
-        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required } ">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" class="form-control" ng-model="username" required />
         </div>

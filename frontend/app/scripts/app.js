@@ -22,8 +22,8 @@ var app = angular
 
 app.config(['ngToastProvider', function(ngToast) {
     ngToast.configure({
-      verticalPosition: 'bottom',
-      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
       maxNumber: 3
     });
   }]);

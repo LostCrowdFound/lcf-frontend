@@ -13,19 +13,19 @@ body {
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 0px;
   /*line-height: 40px;*/
   padding-bottom: 0px;
 }
@@ -37,26 +37,47 @@ body {
   border-top: 1px solid #e5e5e5;
 }
 
-.container-narrow > hr {
-  /*margin: 30px 0;*/
-}
-
 .buttons {
   text-align: center;
 }
 
-.jumbotron
-{
+.jumbotron {
+  max-width: 100%;
+  max-height: 100%;
+  background-position: 0% 25%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 5em inherit;
+  margin-bottom: 0px;
+  min-height: 500px;
+}
+
+.panel {
+  padding: 5em;
+  min-width: 30%;
+  min-height: 60%;
+  max-width: 100%;
+  max-height: 90%;
+  background-color: rgba(255,255, 255, 0.6);
+  color: black;
+  border: none;
+}
+
+.navbar {
   margin-bottom: 0px;
 }
 
-.jumbotron img {
-  max-width: 100%;
-  max-height: 100%;
+.jumbo-one {
+  
 }
 
 .jumbo-two {
-  background-color: white;
+  background-image: url(../images/image_one.jpg);
+}
+
+.jumbo-three {
+  background-image: url(../images/image_two.jpg);
 }
 
 /* Supporting marketing content */
@@ -71,7 +92,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    /*max-width: 730px;*/
   }
 
   /* Remove the padding we set earlier */
@@ -82,7 +103,7 @@ body {
   }
   /* Space out the masthead */
   .header {
-    margin-bottom: 30px;
+    margin-bottom: 0px;
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
