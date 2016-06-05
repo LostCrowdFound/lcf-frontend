@@ -8,17 +8,28 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('lostcrowdfoundApp', [
+    'ngMap',
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
-  ])
-  .constant("BASEURL", "http://localhost:3000")
-  .config(function ($routeProvider) {
+    'ngTouch',
+    'ngToast'
+  ]);
+
+app.config(['ngToastProvider', function(ngToast) {
+    ngToast.configure({
+      verticalPosition: 'bottom',
+      horizontalPosition: 'right',
+      maxNumber: 3
+    });
+  }]);
+
+app.constant("BASEURL", "http://localhost:3000");
+app.config(function ($routeProvider, $httpProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -55,7 +66,16 @@ angular
         controller: 'RegisterCtrl',
         controllerAs: 'register'
       })
+      .when('/logout', {
+        templateUrl: 'views/main.html',
+        controller: 'LogoutCtrl',
+        controllerAs: 'logout'
+      })
       .otherwise({
         redirectTo: '/'
       });
+
+      $httpProvider.interceptors.push('reqErrInterceptor');
+        //auth interceptor
+      $httpProvider.interceptors.push('authInterceptor');
   });

@@ -2,7 +2,6 @@
     <h2>Register</h2>
 
     <form name="form" ng-submit="register()" role="form" ng-controller="RegisterCtrl">
-        <p class="md-warn" ng-show="errorText">{{errorText}}</p>
         <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" class="form-control" ng-model="username" required />
@@ -17,7 +16,7 @@
         </div>
         <div class="form-actions">
             <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Register</button>
-            <a href="#/login" class="btn btn-link">Cancel</a>
+            <a href="#/" class="btn btn-link">Cancel</a>
         </div>
     </form>
 </div>

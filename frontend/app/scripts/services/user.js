@@ -13,9 +13,6 @@
         this.logout = auth.deleteToken;
         this.getUser = getUser;
 
-        $scope.loggedIn = loggedIn;
-
-
         ////////////////
 
         function register(user, email, pass) {

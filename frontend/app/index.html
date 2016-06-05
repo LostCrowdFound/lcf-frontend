@@ -9,6 +9,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/ngToast/dist/ngToast.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -16,14 +17,15 @@
     <!-- endbuild -->
   </head>
   <body ng-app="lostcrowdfoundApp">
+    <toast></toast>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <div class="navbar navbar-inverse" role="navigation">
-        <div class="container">
+      <div class="navbar navbar-inverse" role="navigation" ng-controller="MainCtrl">
+        <!--<div class="container">-->
           <div class="navbar-header">
 
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
@@ -42,24 +44,16 @@
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/">Contact</a></li>
-              <li><a ng-href="#/login">Login</a></li>
-              <li><a ng-href="#/register">Register</a></li>
+              <li><a ng-href="#/login" ng-show="!loggedIn">Login</a></li>
+              <li><a ng-href="#/" ng-click="logout()" ng-show="loggedIn">Logout</a></li>
+              <li><a ng-href="#/register" ng-show="!loggedIn">Register</a></li>
             </ul>
-          </div>
+        <!--  </div>-->
         </div>
       </div>
     </div>
 
-    <div class="navbar navbar-default navbar-fixed-bottom">
-      <div class="container">
-        <p class="navbar-text pull-left">SEBA Master TU München 2016</p>
-        <a class="navbar-text pull-right" ng-href="#/impressum">Impressum</a>
-      </div>
-    </div>
-
-    <div class="container">
     <div ng-view=""></div>
-    </div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -73,6 +67,10 @@
        ga('send', 'pageview');
     </script>
 
+    <script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
+
+
+
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -84,6 +82,15 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/markerclustererplus/src/markerclusterer.js"></script>
+    <script src="bower_components/google-maps-utility-library-v3-markerwithlabel/dist/markerwithlabel.js"></script>
+    <script src="bower_components/google-maps-utility-library-v3-infobox/dist/infobox.js"></script>
+    <script src="bower_components/google-maps-utility-library-v3-keydragzoom/dist/keydragzoom.js"></script>
+    <script src="bower_components/js-rich-marker/src/richmarker.js"></script>
+    <script src="bower_components/ngToast/dist/ngToast.js"></script>
+    <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -98,6 +105,10 @@
         <script src="scripts/services/auth.js"></script>
         <script src="scripts/services/user.js"></script>
         <script src="scripts/services/auth-interceptor.js"></script>
+        <script src="scripts/controllers/logout.js"></script>
+        <script src="scripts/services/items.js"></script>
+        <script src="scripts/controllers/url.js"></script>
+        <script src="scripts/services/reqerrinterceptor.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -1,10 +1,30 @@
-<div class="jumbotron">
+<div ng-controller="MainCtrl">
+<div class="jumbotron jumbo-one">
+  <div class="container">
   <p>Revolutionary Lost and Found Office.</p>
+  </div>
+</div>
+<div class="jumbotron jumbo-two">
+  <div class="container">
+    <div class="col-md-4">
+      <h2>Success.</h2>
+      <p>Nothing is easier than using LostCrowdFound to find your lost valuables!</p>
+      <a class="btn btn-danger" ng-click="searchForItem()">I lost something!</a>
+    </div>
+    <div class="col-md-8">
+      <img src="../images/map.jpg"/>      
+    </div>
+  </div>
+</div>
+<div class="jumbotron jumbo-three">
+  <div class="container">
+  <p>Revolutionary Lost and Found Office.</p>
+  </div>
 </div>
 
-<div class="buttons">
+<div class="buttons" ng-controller="MainCtrl">
   <a class="btn btn-success" href="#/foundItem">I found something!</a>
-  <a class="btn btn-danger" ng-href="#/lostItem">I lost something!</a>
+  
 </div>
 
 <div class="row marketing">
