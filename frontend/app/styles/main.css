@@ -1,8 +1,8 @@
 .browsehappy {
-  margin: 0.2em 0;*/
+  margin: 0.2em 0;
   background: #ccc;
   color: #000;
-  padding: 0.2em 0;*/
+  padding: 0.2em 0;
 }
 
 body {
@@ -47,6 +47,11 @@ body {
 
 .jumbotron
 {
+  margin-bottom: 0px;
+}
+
+.jumbo-two {
+  background-color: white;
 }
 
 /* Supporting marketing content */
