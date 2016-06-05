@@ -1,19 +1,26 @@
 <div class="container" ng-controller="LostitemCtrl as vm">
     <div class="row">
-            <h2>I lost an item.</h2>
-
+            <h2>You lost an item?</h2>
+            <p class="text">Just fill out this form and search for it!</p>
             <form name="form" ng-submit="search()" role="form">
-                <div class="form-group" ng-class="{ 'has-error': form.type.$dirty && form.type.$error.required }">
-                    <label for="type">Type</label>
-                    <input type="text" name="type" id="type" class="form-control" ng-model="type" required />
+
+                <div class="row">
+                    <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.type.$dirty && form.type.$error.required }">
+                        <label for="type">Type</label>
+                        <input type="text" name="type" id="type" class="form-control" ng-model="type" required />
+                    </div>
                 </div>
-                <div class="form-group" ng-class="{ 'has-error': form.brand.$dirty && form.brand.$error.required }">
-                    <label for="brand">Brand</label>
-                    <input type="text" name="brand" id="brand" class="form-control" ng-model="brand" required />
+                <div class="row">
+                    <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.brand.$dirty && form.brand.$error.required }">
+                        <label for="brand">Brand</label>
+                        <input type="text" name="brand" id="brand" class="form-control" ng-model="brand" required />
+                    </div>
                 </div>
-                <div class="form-group" ng-class="{ 'has-error': form.name.$dirty && form.name.$error.required }">
-                    <label class="input-medium" for="name">Name</label>
-                    <input type="text" name="name" id="name" class="form-control" ng-model="name" required />
+                <div class="row">
+                    <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.name.$dirty && form.name.$error.required }">
+                        <label class="input-medium" for="name">Name</label>
+                        <input type="text" name="name" id="name" class="form-control" ng-model="name" required />
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="map">Specify the position where you lost your valuable.<br>Adjust the circle to fit the position by dragging it around and adjusting the radius size.</label>
