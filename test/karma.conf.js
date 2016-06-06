@@ -38,6 +38,7 @@ module.exports = function(config) {
       'bower_components/js-rich-marker/src/richmarker.js',
       'bower_components/angular-google-maps/dist/angular-google-maps.js',
       'bower_components/ngToast/dist/ngToast.js',
+      'bower_components/ngmap/build/scripts/ng-map.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

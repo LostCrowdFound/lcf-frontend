@@ -10,11 +10,11 @@
             $window.localStorage.jwtToken = t;
         };
 
-        this.deleteToken = function() {
+        this.getToken = function() {
             return $window.localStorage.jwtToken;
         };
 
-        this.getToken = function() {
+        this.deleteToken = function() {
             $window.localStorage.removeItem('jwtToken');
         };
 

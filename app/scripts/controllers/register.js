@@ -12,8 +12,6 @@ angular.module('lostcrowdfoundApp')
         $scope.username = '';
         $scope.email = '';
         $scope.password = '';
-        $scope.errorText = '';
-        $scope.successText = '';
 
         $scope.register = function() {
         	console.log("Register user");
@@ -25,14 +23,14 @@ angular.module('lostcrowdfoundApp')
                     });
                 $location.path('/login');
             }, function (response) {
-                if (response.status === 400 || response.status === 401) {
+                if (response.status === 400 || response.status === 500) {
                     ngToast.create({
                         className: 'danger',
                         dismissOnClick: true,
                         content: 'An unknown error occured. please try again later.',
                     });
                 }
-                if (response.status === 500) {
+                if (response.status === 401) {
                     ngToast.create({
                         className: 'danger',
                         dismissOnClick: true,
