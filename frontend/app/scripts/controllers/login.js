@@ -12,9 +12,7 @@ angular.module('lostcrowdfoundApp')
         $scope.username = '';
         $scope.password = '';
 
-        $scope.login = login;
-
-        function login() {
+        $scope.login = function() {
             currUser.login($scope.username, $scope.password).then(function () {
                 $location.path("/#");
                 ngToast.create({
@@ -23,7 +21,7 @@ angular.module('lostcrowdfoundApp')
                         content: 'Login successfull.',
                     });
             }, function (response) {
-                if (response.status == 400 || response.status == 401) {
+                if (response.status === 400 || response.status === 401) {
                     ngToast.create({
                         className: 'danger',
                         dismissOnClick: true,
@@ -36,6 +34,6 @@ angular.module('lostcrowdfoundApp')
                         content: 'An unknown error occured. please try again later.',
                     });
                 }
-            });            
-        }
+            });
+        };
     });

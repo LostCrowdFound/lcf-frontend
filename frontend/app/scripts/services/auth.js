@@ -2,44 +2,35 @@
 
 (function(){
 
-    angular.module('lostcrowdfoundApp')
-        .service('auth', authService);
-
     function authService($window) {
-
         var self = this;
-        this.token;
+        this.token = null;
 
+        this.saveToken = function(t) {
+            $window.localStorage.jwtToken = t;
+        };
 
-        this.isAuthed = isAuthed;
-        this.parseJwt = parseJwt;
-        this.saveToken = saveToken;
-        this.getToken = getToken;
-        this.deleteToken = deleteToken;
+        this.deleteToken = function() {
+            return $window.localStorage.jwtToken;
+        };
 
-        function saveToken(t) {
-            $window.localStorage['jwtToken'] = t;
-        }
-
-        function getToken() {
-            return $window.localStorage['jwtToken'];
-        }
-
-        function deleteToken() {
+        this.getToken = function() {
             $window.localStorage.removeItem('jwtToken');
-        }
+        };
 
-        function parseJwt(token) {
+        this.parseJwt= function(token) {
             var base64Url = token.split('.')[1];
             var base64 = base64Url.replace('-', '+').replace('_', '/');
             return JSON.parse($window.atob(base64));
-        }
+        };
 
-        function isAuthed() {
-
+        this.isAuthed = function() {
             var token = self.getToken();
             return !!token;
-        }
+        };
     }
+
+    angular.module('lostcrowdfoundApp')
+        .service('auth', authService);
 
 })();

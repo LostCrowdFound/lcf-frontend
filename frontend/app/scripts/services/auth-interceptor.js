@@ -9,37 +9,37 @@
  */
 (function(){
 
-    angular.module('lostcrowdfoundApp')
-        .factory("authInterceptor", authInterceptor);
-
     function authInterceptor(BASEURL, auth) {
 
-        function req(config){
+        function request(cfg){
             // automatically attach Authorization header
-            if(config.url.indexOf(BASEURL) === 0 && auth.isAuthed()) {
+            if(cfg.url.indexOf(BASEURL) === 0 && auth.isAuthed()) {
                 var token = auth.getToken();
-                config.headers.Authorization = 'JWT ' + token;
+                cfg.headers.Authorization = 'JWT ' + token;
             }
 
-            return config;
+            return cfg;
 
         }
 
-        function res(res){
+        function response(resp){
 
             // If a token was sent back, save it
-            if(res && res.config.url.indexOf(BASEURL) === 0 && res.data.token) {
-                auth.saveToken(res.data.token);
+            if(!!resp && resp.config.url.indexOf(BASEURL) === 0 && resp.data.token) {
+                auth.saveToken(resp.data.token);
             }
 
-            return res;
+            return resp;
 
         }
 
         return {
-            request: req,
-            response: res
+            request: request,
+            response: response
         };
     }
+
+    angular.module('lostcrowdfoundApp')
+        .factory("authInterceptor", authInterceptor);
 
 })();

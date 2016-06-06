@@ -8,19 +8,7 @@
  * Factory in the lostcrowdfoundApp.
  */
 (function () {
-
-    angular.module('lostcrowdfoundApp')
-        .factory("reqErrInterceptor", reqErrInterceptor);
-
     function reqErrInterceptor(BASEURL, $injector, $q) {
-
-
-        return {
-            responseError: responseError
-        };
-
-        //////////////////////////////
-
         function responseError(rej) {
             if ([-1, 404].indexOf(rej.status) !== -1) {
                 showAlert({title: 'Connection Error', msg: 'Could not reach the server. Try again later'});
@@ -40,10 +28,13 @@
                 ok: 'Close'
             });
 
-            $mdDialog.show(alert)
-
+            $mdDialog.show(alert);
         }
 
+        return {
+            responseError: responseError
+        };
     }
 
+    angular.module('lostcrowdfoundApp').factory("reqErrInterceptor", reqErrInterceptor);
 })();

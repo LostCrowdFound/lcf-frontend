@@ -14,40 +14,35 @@ angular.module('lostcrowdfoundApp')
     var vm = this;
 
     NgMap.getMap().then(function(evtMap) {
-      map = evtMap;
+        map = evtMap;
     });
 
     vm.radius = 1000;
     vm.lat = 48.138370;
     vm.lon = 11.578553;
 
-    vm.radiusChanged = function(event) {
+    vm.radiusChanged = function() {
       vm.radius = this.getRadius();
-    }
+    };
 
-    vm.centerChanged = function(event) {
-      var pos = this.getCenter();
+    vm.centerChanged = function() {
+        var pos = this.getCenter();
 
-      vm.lon = pos.lng();
-      vm.lat = pos.lat();
-    }
+        vm.lon = pos.lng();
+        vm.lat = pos.lat();
+    };
 
-
-  	$scope.type = "";
-  	$scope.brand = "";
-  	$scope.name = "";
-
-    $scope.search = search;
+    $scope.type = "";
+    $scope.brand = "";
+    $scope.name = "";
 
     $scope.items = [];
 
 
-  	function search() {
-  		itemsService.searchItems($scope.type, $scope.brand, $scope.name, vm.lat, vm.lon, vm.radius)
-        .then(function (response) {
-          $scope.items = response.data;
-        }, function (response) {
-
-        });
-  	}
+    $scope.search = function() {
+        itemsService.searchItems($scope.type, $scope.brand, $scope.name, vm.lat, vm.lon, vm.radius)
+        .then(function (resp) {
+          $scope.items = resp.data;
+        }); // TODO: err
+    };
 });

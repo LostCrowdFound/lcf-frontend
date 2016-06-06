@@ -15,9 +15,7 @@ angular.module('lostcrowdfoundApp')
         $scope.errorText = '';
         $scope.successText = '';
 
-        $scope.register = register;
-
-        function register() {
+        $scope.register = function() {
         	console.log("Register user");
             currUser.register($scope.username, $scope.email, $scope.password).then(function () {
                 ngToast.create({
@@ -25,7 +23,7 @@ angular.module('lostcrowdfoundApp')
                         dismissOnClick: true,
                         content: 'Registration successfull.',
                     });
-                $location.path('/login')
+                $location.path('/login');
             }, function (response) {
                 if (response.status === 400 || response.status === 401) {
                     ngToast.create({
@@ -42,6 +40,6 @@ angular.module('lostcrowdfoundApp')
                     });
                 }
             });
-        }
+        };
     });
 

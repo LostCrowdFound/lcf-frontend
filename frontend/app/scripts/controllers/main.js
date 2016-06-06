@@ -9,32 +9,28 @@
  */
 angular.module('lostcrowdfoundApp')
   .controller('MainCtrl', function ($scope, currUser, ngToast, $location) {
-    
+
     $scope.user = null;
 
-    $scope.logout = logout;
+    $scope.$watch(function() {
+        return currUser.loggedIn();
+    }, function(loggedIn) {
+        $scope.loggedIn = loggedIn;
+        if (!!loggedIn && !$scope.user) {
+            $scope.user = currUser.getUser();
+        }
+    });
 
-    $scope.searchForItem = searchForItem;
-
-    $scope.$watch(function(){
-                    return currUser.loggedIn();
-                }, function(loggedIn){
-                    $scope.loggedIn = loggedIn;
-                    if (loggedIn && !$scope.user) {
-                        $scope.user = currUser.getUser();
-                    }
-                });
-
-    function logout() {
-    	currUser.logout();
+    $scope.logout = function() {
+        currUser.logout();
         ngToast.create({
             className: 'success',
             dismissOnClick: true,
             content: 'Logout successfull.',
         });
-    }
+    };
 
-    function searchForItem() {
+    $scope.searchForItem = function() {
         if($scope.loggedIn) {
             $location.path('/lostItem');
         } else {
@@ -45,6 +41,5 @@ angular.module('lostcrowdfoundApp')
                 content: 'You need to log in first!',
             });
         }
-
-    }
-  });
+    };
+});
