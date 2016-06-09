@@ -17,9 +17,9 @@ angular.module('lostcrowdfoundApp')
       map = evtMap;
   	});
 
-    $scope.types = ["Smartphone"];
-    $scope.brands = ["Apple", "Samsung", "Microsoft"];
-    $scope.models = ["iPhone 5s", "iPhone 6", "iPhone 5c"];
+    vm.types = ["Smartphone"];
+    vm.brands = ["Apple", "Samsung", "Microsoft"];
+    vm.models = ["iPhone 5s", "iPhone 6", "iPhone 5c"];
 
 /*    $scope.brandSelectionVisible = true;
     $scope.nameSelectionVisible = true;
@@ -52,8 +52,8 @@ angular.module('lostcrowdfoundApp')
     }
     */
 
-  	$scope.name = "";
-  	$scope.email = "";
+  	vm.name = "";
+  	vm.email = "";
 
     vm.lat = 48.138370;
     vm.lon = 11.578553;
@@ -65,8 +65,8 @@ angular.module('lostcrowdfoundApp')
       vm.lat = pos.lat();
     };
 
-    $scope.addItem = function() {
-  		itemsService.addItem($scope.typeSelection, $scope.brandSelection, $scope.modelSelection, $scope.email, vm.lat, vm.lon);
+    vm.addItem = function() {
+  		itemsService.addItem(vm.typeSelection, vm.brandSelection, vm.modelSelection, vm.email, vm.lat, vm.lon);
       $location.path("/#");
       ngToast.create({
         className: 'success',
