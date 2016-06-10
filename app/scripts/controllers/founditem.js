@@ -8,7 +8,7 @@
  * Controller of the lostcrowdfoundApp
  */
 angular.module('lostcrowdfoundApp')
-  .controller('FounditemCtrl', function ($scope, NgMap, itemsService, $location, ngToast) {
+  .controller('FounditemCtrl', function (NgMap, itemsService, $location, ngToast) {
 
     var map;
     var vm = this;
@@ -17,9 +17,10 @@ angular.module('lostcrowdfoundApp')
       map = evtMap;
   	});
 
-    $scope.types = ["Smartphone"];
-    $scope.brands = ["Apple", "Samsung", "Microsoft"];
-    $scope.models = ["iPhone 5s", "iPhone 6", "iPhone 5c"];
+    vm.types = ["Smartphone"];
+    vm.brands = ["Apple", "Samsung", "Microsoft"];
+    vm.models = ["iPhone 5s", "iPhone 6", "iPhone 5c"];
+
 
 /*    $scope.brandSelectionVisible = true;
     $scope.nameSelectionVisible = true;
@@ -51,9 +52,16 @@ angular.module('lostcrowdfoundApp')
       }
     }
     */
+    var today = new Date();
 
-  	$scope.name = "";
-  	$scope.email = "";
+    vm.dtOptions = {
+      maxDate: today
+    };
+
+    vm.date = today;
+
+  	vm.name = "";
+  	vm.email = "";
 
     vm.lat = 48.138370;
     vm.lon = 11.578553;
@@ -65,8 +73,8 @@ angular.module('lostcrowdfoundApp')
       vm.lat = pos.lat();
     };
 
-    $scope.addItem = function() {
-  		itemsService.addItem($scope.typeSelection, $scope.brandSelection, $scope.modelSelection, $scope.email, vm.lat, vm.lon);
+    vm.addItem = function() {
+  		itemsService.addItem(vm.typeSelection, vm.brandSelection, vm.modelSelection, vm.email, vm.lat, vm.lon, vm.date);
       $location.path("/#");
       ngToast.create({
         className: 'success',

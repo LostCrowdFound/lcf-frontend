@@ -1,35 +1,41 @@
 <div class="container">
     <h2>You found something?</h2>
     <p>Just fill out this form and wait to be contacted via E-Mail.</p>
-    <form name="form" ng-submit="addItem()" role="form" ng-controller="FounditemCtrl as vm">
-                    <div class="row">
-        <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
-            <label for="type">Specify the type of your found item.</label>
-            <select class="form-control" ng-model="typeSelection">
-                <option ng-repeat="type in types">{{type}}</option>
-            </select>
-        </div>
+    <form name="form" ng-submit="vm.addItem()" role="form" ng-controller="FounditemCtrl as vm">
+        <div class="row">
+            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+                <label for="type">Specify the type of your found item.</label>
+                <select class="form-control" ng-model="vm.typeSelection">
+                    <option ng-repeat="type in vm.types">{{type}}</option>
+                </select>
+            </div>
         </div>
         <div class="row">
             <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
                 <label for="brand">What brand is it?</label>
-                <select class="form-control" ng-model="brandSelection">
-                    <option ng-repeat="brand in brands">{{brand}}</option>
+                <select class="form-control" ng-model="vm.brandSelection">
+                    <option ng-repeat="brand in vm.brands">{{brand}}</option>
                 </select>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
                 <label for="brand">Could you specify the model?</label>
-                <select class="form-control" ng-model="modelSelection">
-                    <option ng-repeat="model in models">{{model}}</option>
+                <select name="brand" class="form-control" ng-model="vm.modelSelection">
+                    <option ng-repeat="model in vm.models">{{model}}</option>
                 </select>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-6 col-sm-8 col-xs-10">
-                <label for="email">Your E-Mail Address</label>
-                <input type="text" name="email" id="email" class="form-control" ng-model="email" required />
+                <label for="email">To be able to contact you, we need your E-Mail Address.</label>
+                <input type="text" name="email" id="email" class="form-control" ng-model="vm.email" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 col-sm-8 col-xs-10">
+                <label for="datePicker">When did you find it?</label>
+                <uib-datepicker ng-model="vm.date" datepicker-options="vm.dtOptions"></uib-datepicker>
             </div>
         </div>
         <div class="form-group">
@@ -38,7 +44,6 @@
                 <marker centered="true" draggable="true" " position="{{vm.lat}}, {{vm.lon}}" on-dragend="vm.pos()"></marker>
             </ng-map>
         </div>
-
         <div class="form-actions">
             <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Submit</button>
             <a href="#/" class="btn btn-link">Cancel</a>

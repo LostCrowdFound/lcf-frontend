@@ -22,14 +22,15 @@
             });
         };
 
-        this.addItem = function(type, brand, name, email, lat,lon) {
+        this.addItem = function(type, brand, name, email, lat,lon, date) {
             $http.post(BASEURL + '/api/items', {
                 type: type,
                 brand: brand,
                 name: name,
                 email: email,
                 lat: lat,
-                lon: lon
+                lon: lon,
+                date: date
             });
         };
     }

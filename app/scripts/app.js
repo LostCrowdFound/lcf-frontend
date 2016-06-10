@@ -17,7 +17,8 @@ var app = angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngToast'
+    'ngToast',
+    'ui.bootstrap'
   ]);
 
 app.config(['ngToastProvider', function(ngToast) {
