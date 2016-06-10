@@ -21,6 +21,14 @@ angular.module('lostcrowdfoundApp')
     vm.lat = 48.138370;
     vm.lon = 11.578553;
 
+    var today = new Date();
+
+    vm.dtOptions = {
+      maxDate: today
+    };
+
+    vm.date = today;
+
     vm.radiusChanged = function() {
       vm.radius = this.getRadius();
     };
@@ -40,7 +48,7 @@ angular.module('lostcrowdfoundApp')
 
 
     $scope.search = function() {
-        itemsService.searchItems($scope.type, $scope.brand, $scope.name, vm.lat, vm.lon, vm.radius)
+        itemsService.searchItems($scope.type, $scope.brand, $scope.name, vm.lat, vm.lon, vm.radius, vm.date)
         .then(function (resp) {
           $scope.items = resp.data;
         }); // TODO: err

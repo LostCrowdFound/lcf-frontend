@@ -21,6 +21,7 @@ angular.module('lostcrowdfoundApp')
     vm.brands = ["Apple", "Samsung", "Microsoft"];
     vm.models = ["iPhone 5s", "iPhone 6", "iPhone 5c"];
 
+
 /*    $scope.brandSelectionVisible = true;
     $scope.nameSelectionVisible = true;
 
@@ -51,6 +52,13 @@ angular.module('lostcrowdfoundApp')
       }
     }
     */
+    var today = new Date();
+
+    vm.dtOptions = {
+      maxDate: today
+    };
+
+    vm.date = today;
 
   	vm.name = "";
   	vm.email = "";
@@ -66,7 +74,7 @@ angular.module('lostcrowdfoundApp')
     };
 
     vm.addItem = function() {
-  		itemsService.addItem(vm.typeSelection, vm.brandSelection, vm.modelSelection, vm.email, vm.lat, vm.lon);
+  		itemsService.addItem(vm.typeSelection, vm.brandSelection, vm.modelSelection, vm.email, vm.lat, vm.lon, vm.date);
       $location.path("/#");
       ngToast.create({
         className: 'success',
