@@ -8,7 +8,7 @@
  * Controller of the lostcrowdfoundApp
  */
 angular.module('lostcrowdfoundApp')
-  .controller('FounditemCtrl', function ($scope, NgMap, itemsService, $location, ngToast) {
+  .controller('FounditemCtrl', function (NgMap, itemsService, $location, ngToast) {
 
     var map;
     var vm = this;
