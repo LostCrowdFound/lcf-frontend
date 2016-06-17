@@ -3,7 +3,7 @@
     <p>Just fill out this form and wait to be contacted via E-Mail.</p>
     <form name="form" ng-submit="vm.addItem()" role="form" ng-controller="FounditemCtrl as vm">
         <div class="row">
-            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.username.$error.required }">
                 <label for="type">Specify the type of your found item.</label>
                 <select class="form-control" ng-model="vm.typeSelection">
                     <option ng-repeat="type in vm.types">{{type}}</option>
@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
+            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$error.required }">
                 <label for="brand">What brand is it?</label>
                 <select class="form-control" ng-model="vm.brandSelection">
                     <option ng-repeat="brand in vm.brands">{{brand}}</option>
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
+            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$error.required }">
                 <label for="brand">Could you specify the model?</label>
                 <select name="brand" class="form-control" ng-model="vm.modelSelection">
                     <option ng-repeat="model in vm.models">{{model}}</option>
@@ -39,14 +39,14 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="foundMap">Where did you find it? Specify the location by dragging the marker around.</label>
-            <ng-map zoom="11" center="current-position" name="foundMap" street-view-control="false" default-style="false">
-                <marker centered="true" draggable="true" " position="{{vm.lat}}, {{vm.lon}}" on-dragend="vm.pos()"></marker>
+            <label for="map">Where did you find it? Specify the location by dragging the marker around.</label>
+            <ng-map zoom="11" center="current-position" name="map" street-view-control="false" default-style="false">
+                <marker centered="true" draggable="true" position="{{vm.lat}}, {{vm.lon}}" on-dragend="vm.pos()"></marker>
             </ng-map>
         </div>
         <div class="form-actions">
             <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Submit</button>
             <a href="#/" class="btn btn-link">Cancel</a>
         </div>
-    </form>            
+    </form>
 </div>

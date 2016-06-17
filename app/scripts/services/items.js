@@ -9,7 +9,7 @@
  */
  (function(){
     function itemService(BASEURL, $http) {
-        this.searchItems = function(type, brand, name, lat, lon, radius) {
+        this.searchItems = function(type, brand, name, lat, lon, radius, date) {
             return $http.get(BASEURL + '/api/items', {
                 params: {
                     type: type,
@@ -17,7 +17,8 @@
                     name: name,
                     lat: lat,
                     lon: lon,
-                    radius: radius
+                    radius: radius,
+                    date: date
                 }
             });
         };

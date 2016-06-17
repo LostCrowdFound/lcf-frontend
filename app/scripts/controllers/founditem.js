@@ -17,20 +17,20 @@ angular.module('lostcrowdfoundApp')
       map = evtMap;
   	});
 
-    vm.types = ["Smartphone"];
-    vm.brands = ["Apple", "Samsung", "Microsoft"];
-    vm.models = ["iPhone 5s", "iPhone 6", "iPhone 5c"];
+    vm.types = ['Smartphone'];
+    vm.brands = ['Apple', 'Samsung', 'Microsoft'];
+    vm.models = ['iPhone 5s', 'iPhone 6', 'iPhone 5c'];
 
 
 /*    $scope.brandSelectionVisible = true;
     $scope.nameSelectionVisible = true;
 
-    $scope.type = "";
+    $scope.type = '';
 
     $scope.getBrands = function() {
       switch(type) {
-        case "Smartphone":
-          return ["Apple, Samsung, Microsoft"];
+        case 'Smartphone':
+          return ['Apple, Samsung, Microsoft'];
           break;
         default:
           $scope.brandSelectionVisible = false;
@@ -40,14 +40,14 @@ angular.module('lostcrowdfoundApp')
 
 /*    $scope.getNames = function() {
       switch(brandSelection) {
-        case "Apple":
-          $scope.names = ["iPhone 5s, iPhone 6, iPhone 5c"];
+        case 'Apple':
+          $scope.names = ['iPhone 5s, iPhone 6, iPhone 5c'];
           break;
-        case "Samsung":
-          $scope.names = ["Galaxy S5, Galaxy S6"];
+        case 'Samsung':
+          $scope.names = ['Galaxy S5, Galaxy S6'];
           break;
-        case "Microsoft":
-          $scope.names = ["Lumia 930,  Lumia 930 XL"];
+        case 'Microsoft':
+          $scope.names = ['Lumia 930,  Lumia 930 XL'];
           break;
       }
     }
@@ -60,8 +60,8 @@ angular.module('lostcrowdfoundApp')
 
     vm.date = today;
 
-  	vm.name = "";
-  	vm.email = "";
+  	vm.name = '';
+  	vm.email = '';
 
     vm.lat = 48.138370;
     vm.lon = 11.578553;
@@ -75,7 +75,7 @@ angular.module('lostcrowdfoundApp')
 
     vm.addItem = function() {
   		itemsService.addItem(vm.typeSelection, vm.brandSelection, vm.modelSelection, vm.email, vm.lat, vm.lon, vm.date);
-      $location.path("/#");
+      $location.path('/#');
       ngToast.create({
         className: 'success',
         dismissOnClick: true,

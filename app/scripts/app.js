@@ -72,6 +72,11 @@ app.config(function ($routeProvider, $httpProvider) {
         controller: 'LogoutCtrl',
         controllerAs: 'logout'
       })
+      .when('/contactOwner', {
+        templateUrl: 'views/contactowner.html',
+        controller: 'ContactownerCtrl',
+        controllerAs: 'contactOwner'
+      })
       .otherwise({
         redirectTo: '/'
       });

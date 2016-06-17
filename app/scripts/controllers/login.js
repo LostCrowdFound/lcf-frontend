@@ -8,13 +8,13 @@
  * Controller of the lostcrowdfoundApp
  */
 angular.module('lostcrowdfoundApp')
-    .controller("LoginCtrl", function ($scope, currUser, $location, ngToast) {
+    .controller('LoginCtrl', function ($scope, currUser, $location, ngToast) {
         $scope.username = '';
         $scope.password = '';
 
         $scope.login = function() {
             currUser.login($scope.username, $scope.password).then(function () {
-                $location.path("/#");
+                $location.path('/#');
                 ngToast.create({
                         className: 'success',
                         dismissOnClick: true,
