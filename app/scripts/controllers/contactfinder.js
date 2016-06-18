@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name lostcrowdfoundApp.controller:ContactownerCtrl
+ * @name lostcrowdfoundApp.controller:ContactfinderCtrl
  * @description
- * # ContactownerCtrl
+ * # ContactfinderCtrl
  * Controller of the lostcrowdfoundApp
  */
 angular.module('lostcrowdfoundApp')
-  .controller('ContactownerCtrl', function () {
+  .controller('ContactfinderCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

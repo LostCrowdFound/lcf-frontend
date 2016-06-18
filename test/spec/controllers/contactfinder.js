@@ -1,23 +1,23 @@
 'use strict';
 
-describe('Controller: ContactownerCtrl', function () {
+describe('Controller: ContactfinderCtrl', function () {
 
   // load the controller's module
   beforeEach(module('lostcrowdfoundApp'));
 
-  var ContactownerCtrl,
+  var ContactfinderCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    ContactownerCtrl = $controller('ContactownerCtrl', {
+    ContactfinderCtrl = $controller('ContactfinderCtrl', {
       $scope: scope
       // place here mocked dependencies
     });
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-    expect(ContactownerCtrl.awesomeThings.length).toBe(3);
+    expect(ContactfinderCtrl.awesomeThings.length).toBe(3);
   });
 });

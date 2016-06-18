@@ -1,15 +1,15 @@
 <div class="container">
     <h2>You want to contact the finder?</h2>
     <p>Just fill out this form as PRECISE as you can! If the owner dismisses your request, you are not able to contact him again!</p>
-    <form name="form" ng-submit="vm.sendMail()" role="form" ng-controller="ContactownerCtrl as vm">
+    <form name="form" ng-submit="vm.sendMail()" role="form" ng-controller="ContactfinderCtrl as vm">
         <div class="row">
             <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.description.$error.required }">
                 <label for="type">Specify your lost item as good as you can. Think about: Color, Scratches, Background-Images, Stickers or ANY other unique property!</label>
-                <input class="form-control" ng-model="vm.userDescription" />
+                <textarea class="form-control" rows="6" ng-model="vm.userDescription" />
             </div>
         </div>
         <div class="form-actions">
-            <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" ng-click="mailOwner()">Submit</button>
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Submit</button>
             <a href="#/" class="btn btn-link">Cancel</a>
         </div>
     </form>
