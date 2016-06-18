@@ -16,6 +16,12 @@ angular.module('lostcrowdfoundApp')
   NgMap.getMap().then(function(evtMap) {
     vm.map = evtMap;
   });
+  
+    vm.types = ['Smartphone'];
+    vm.brands = ['Apple', 'Samsung', 'Microsoft'];
+    vm.models = ['iPhone 5s', 'iPhone 6', 'iPhone 5c'];
+  
+  
   vm.circleVisible = true;
   vm.markerVisible = false;
   vm.radius = 1000;
@@ -69,7 +75,7 @@ angular.module('lostcrowdfoundApp')
 
   vm.search = function() {
     console.log('Searching for items...');
-    itemsService.searchItems(vm.type, vm.brand, vm.name, vm.lat, vm.lon, vm.radius, vm.date)
+    itemsService.searchItems(vm.typeSelection, vm.brandSelection, vm.modelSelection, vm.lat, vm.lon, vm.radius, vm.date)
     .then(function (itemPositions) {
       if(itemPositions.data.length === 0) {
         vm.circleVisible = true;
