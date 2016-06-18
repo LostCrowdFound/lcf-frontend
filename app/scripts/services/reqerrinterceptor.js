@@ -16,7 +16,7 @@
                     dismissOnClick: true,
                     content: 'Could not reach the server. Try again later.',
                 });
-            } 
+            }
 
             return $q.reject(rej);
         }

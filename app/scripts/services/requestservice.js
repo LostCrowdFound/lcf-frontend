@@ -10,7 +10,7 @@
  (function(){
     function requestService(BASEURL, $http) {
       this.addRequest = function(description, userId, itemId) {
-          $http.post(BASEURL + '/api/requests', {
+          return $http.post(BASEURL + '/api/requests', {
             comments: [{
               date: new Date(),
               status: 'open',

@@ -69,7 +69,7 @@ angular.module('lostcrowdfoundApp')
     $location.path('/contactFinder').search(
       {
         itemId: vm.item._id,
-        userId: currUser.userId
+        userId: currUser.userId,
       }
     );
   }
