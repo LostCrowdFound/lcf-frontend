@@ -45,6 +45,7 @@ angular.module('lostcrowdfoundApp')
         content: 'Radius too big!',
       });
       vm.radius = 1000;
+      this.setRadius(vm.radius);
     } else {
       vm.radius = this.getRadius();
     }

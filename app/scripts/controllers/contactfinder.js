@@ -8,10 +8,21 @@
  * Controller of the lostcrowdfoundApp
  */
 angular.module('lostcrowdfoundApp')
-  .controller('ContactfinderCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('ContactfinderCtrl', function (requestService, $location, ngToast) {
+
+    var vm = this;
+
+    vm.description = '';
+
+    vm.createRequest = function () {
+      requestService.addRequest(description, userid)
+      .then(function () {
+        $loaction.path('/#');
+        ngToast.create({
+          className: 'success',
+          dismissOnClick: true,
+          content: 'Request successfully created!',
+        });
+      });
+    }
   });
