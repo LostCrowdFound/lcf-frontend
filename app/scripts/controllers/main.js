@@ -42,4 +42,17 @@ angular.module('lostcrowdfoundApp')
       });
     }
   };
+
+  $scope.addFoundItem = function() {
+    if($scope.loggedIn) {
+      $location.path('/foundItem');
+    } else {
+      $location.path('/login');
+      ngToast.create({
+        className: 'danger',
+        dismissOnClick: true,
+        content: 'You need to log in first!',
+      });
+    }
+  };
 });

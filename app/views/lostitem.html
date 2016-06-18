@@ -3,7 +3,7 @@
     <p>Just fill out this form and search for it!</p>
     <form name="form" ng-submit="vm.search()" role="form" ng-controller="LostitemCtrl as vm">
         <div class="row">
-            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.username.$error.required }">
+            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$error.required }">
                 <label for="type">Specify the type of your lost item.</label>
                 <select class="form-control" ng-model="vm.typeSelection">
                     <option ng-repeat="type in vm.types">{{type}}</option>
@@ -34,7 +34,7 @@
         </div>
         <div class="form-group">
             <label for="map">Specify the position where you lost it.<br>Just drag around the circle and adjust the radius!</label>
-            <ng-map zoom="11" center="[0,0]" name="map" street-view-control="false" default-style="false" zoom-to-include-markers="auto">
+            <ng-map zoom="11" center="current-position" name="map" street-view-control="false" default-style="false" zoom-to-include-markers="auto">
                 <shape id="circle" name="circle" center="current-position" centered="true" stroke-color='#FF0000'
                 stroke-opacity="0.8" stroke-weight="2" on-center_changed="vm.centerChanged()"
                 on-radius_changed="vm.radiusChanged()" radius="{{vm.radius}}" editable="true" ng-if="vm.circleVisible"></shape> <!-- -->

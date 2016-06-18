@@ -9,14 +9,15 @@
  */
  (function(){
     function requestService(BASEURL, $http) {
-      this.addRequest = function(description, userId) {
+      this.addRequest = function(description, userId, itemId) {
           $http.post(BASEURL + '/api/requests', {
-              comments: [
-                date: new Date(),
-                status: 'open',
-                text: description,
-                user: userid,
-              ],
+            comments: [{
+              date: new Date(),
+              status: 'open',
+              text: description,
+              userId: userId,
+            }],
+            itemId: itemId,
           });
       };
     }

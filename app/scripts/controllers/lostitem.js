@@ -8,7 +8,7 @@
 * Controller of the lostcrowdfoundApp
 */
 angular.module('lostcrowdfoundApp')
-.controller('LostitemCtrl', function (NgMap, itemsService, ngToast, $location) {
+.controller('LostitemCtrl', function (NgMap, itemsService, ngToast, $location, currUser) {
 
   var map;
   var vm = this;
@@ -16,12 +16,12 @@ angular.module('lostcrowdfoundApp')
   NgMap.getMap().then(function(evtMap) {
     vm.map = evtMap;
   });
-  
+
     vm.types = ['Smartphone'];
     vm.brands = ['Apple', 'Samsung', 'Microsoft'];
     vm.models = ['iPhone 5s', 'iPhone 6', 'iPhone 5c'];
-  
-  
+
+
   vm.circleVisible = true;
   vm.markerVisible = false;
   vm.radius = 1000;
@@ -30,6 +30,7 @@ angular.module('lostcrowdfoundApp')
   vm.zoomToMarkers = false;
 
   var today = new Date();
+  today.setHours(0,0,0,0);
 
   vm.dtOptions = {
     maxDate: today
@@ -65,7 +66,12 @@ angular.module('lostcrowdfoundApp')
   vm.items = [];
 
   vm.contactFinder = function () {
-    $location.path('/contactFinder');//.search({ id: vm.item._id });
+    $location.path('/contactFinder').search(
+      {
+        itemId: vm.item._id,
+        userId: currUser.userId
+      }
+    );
   }
 
   vm.showContact = function(e, item) {

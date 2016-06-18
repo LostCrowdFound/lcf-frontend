@@ -22,7 +22,7 @@ angular.module('lostcrowdfoundApp')
     vm.models = ['iPhone 5s', 'iPhone 6', 'iPhone 5c'];
 
 
-/*    $scope.brandSelectionVisible = true;
+/*  $scope.brandSelectionVisible = true;
     $scope.nameSelectionVisible = true;
 
     $scope.type = '';
@@ -53,6 +53,7 @@ angular.module('lostcrowdfoundApp')
     }
     */
     var today = new Date();
+    today.setHours(0,0,0,0);
 
     vm.dtOptions = {
       maxDate: today

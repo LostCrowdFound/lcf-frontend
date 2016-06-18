@@ -3,7 +3,7 @@
     <p>Just fill out this form and wait to be contacted via E-Mail.</p>
     <form name="form" ng-submit="vm.addItem()" role="form" ng-controller="FounditemCtrl as vm">
         <div class="row">
-            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.username.$error.required }">
+            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$error.required }">
                 <label for="type">Specify the type of your found item.</label>
                 <select class="form-control" ng-model="vm.typeSelection">
                     <option ng-repeat="type in vm.types">{{type}}</option>

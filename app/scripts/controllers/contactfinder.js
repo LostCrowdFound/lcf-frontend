@@ -12,10 +12,12 @@ angular.module('lostcrowdfoundApp')
 
     var vm = this;
 
+    vm.params = $location.search();
+
     vm.description = '';
 
     vm.createRequest = function () {
-      requestService.addRequest(description, userid)
+      requestService.addRequest(vm.description, params.userId, params.itemId)
       .then(function () {
         $loaction.path('/#');
         ngToast.create({
