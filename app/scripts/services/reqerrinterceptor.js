@@ -26,5 +26,5 @@
         };
     }
 
-    angular.module('lostcrowdfoundApp').factory("reqErrInterceptor", reqErrInterceptor);
+    angular.module('lostcrowdfoundApp').factory('reqErrInterceptor', reqErrInterceptor);
 })();

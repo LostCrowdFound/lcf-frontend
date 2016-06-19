@@ -23,12 +23,12 @@
             });
         };
 
-        this.addItem = function(type, brand, name, email, lat,lon, date) {
+        this.addItem = function(type, brand, name, userId, lat, lon, date) {
             $http.post(BASEURL + '/api/items', {
                 type: type,
                 brand: brand,
                 name: name,
-                email: email,
+                userId: userId,
                 lat: lat,
                 lon: lon,
                 date: date

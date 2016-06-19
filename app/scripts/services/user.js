@@ -4,7 +4,7 @@
     function currUserService(BASEURL, $http, auth) {
         this.loggedIn = auth.isAuthed;
         this.logout   = auth.deleteToken;
-        this.userId = '';
+        var userId = '';
 
         this.register = function(user, email, pass) {
             return $http.post(BASEURL + '/signup', {
@@ -15,16 +15,17 @@
         };
 
         this.login = function(user, pass) {
-            //var loginAnswer =
             return $http.post(BASEURL + '/login', {
                 username: user,
                 password: pass
+            }).success(function (data) {
+              userId = data.userId;
             });
-            //console.log('loginAnswer');
-            //console.log(loginAnswer);
-            //this.userId = loginAnswer.data.userId;
-            //return loginAnswer;
         };
+
+        this.userId = function() {
+          return userId;
+        }
 
         this.getUser = function() {
             var token = auth.getToken();

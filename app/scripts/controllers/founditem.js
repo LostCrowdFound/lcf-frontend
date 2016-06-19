@@ -8,7 +8,7 @@
  * Controller of the lostcrowdfoundApp
  */
 angular.module('lostcrowdfoundApp')
-  .controller('FounditemCtrl', function (NgMap, itemsService, $location, ngToast) {
+  .controller('FounditemCtrl', function (NgMap, itemsService, $location, ngToast, currUser) {
 
     var map;
     var vm = this;
@@ -62,7 +62,6 @@ angular.module('lostcrowdfoundApp')
     vm.date = today;
 
   	vm.name = '';
-  	vm.email = '';
 
     vm.lat = 48.138370;
     vm.lon = 11.578553;
@@ -75,7 +74,7 @@ angular.module('lostcrowdfoundApp')
     };
 
     vm.addItem = function() {
-  		itemsService.addItem(vm.typeSelection, vm.brandSelection, vm.modelSelection, vm.email, vm.lat, vm.lon, vm.date);
+  		itemsService.addItem(vm.typeSelection, vm.brandSelection, vm.modelSelection, currUser.userId(), vm.lat, vm.lon, vm.date);
       $location.path('/#');
       ngToast.create({
         className: 'success',

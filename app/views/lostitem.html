@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$error.required }">
+            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$error.required }" required>
                 <label for="brand">Could you specify the model?</label>
                 <select name="brand" class="form-control" ng-model="vm.modelSelection">
                     <option ng-repeat="model in vm.models">{{model}}</option>
@@ -34,12 +34,11 @@
         </div>
         <div class="form-group">
             <label for="map">Specify the position where you lost it.<br>Just drag around the circle and adjust the radius!</label>
-            <ng-map zoom="11" center="current-position" name="map" street-view-control="false" default-style="false" zoom-to-include-markers="auto">
+            <ng-map max-zoom="15" min-zoom="8" zoom="13" center="current-position" name="map" street-view-control="false" default-style="false">
+                <marker id="{{item._id}}" position="{{item.lat}}, {{item.lon}}" animation="DROP" on-click="vm.showContact(item)" ng-repeat="item in vm.items" ng-if="vm.markerVisible"></marker>
                 <shape id="circle" name="circle" center="current-position" centered="true" stroke-color='#FF0000'
                 stroke-opacity="0.8" stroke-weight="2" on-center_changed="vm.centerChanged()"
                 on-radius_changed="vm.radiusChanged()" radius="{{vm.radius}}" editable="true" ng-if="vm.circleVisible"></shape> <!-- -->
-                <marker id="{{item._id}}" position="{{item.lat}}, {{item.lon}}" animation="DROP" on-click="vm.showContact(item)" ng-repeat="item in vm.items" ng-if="vm.markerVisible"></marker>
-
                 <info-window id="contact-iw">
                    <div ng-non-bindable="">
                      <button class="btn btn-primary" ng-click="vm.contactFinder()">Contact!</button>

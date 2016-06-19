@@ -8,7 +8,7 @@
  * Controller of the lostcrowdfoundApp
  */
 angular.module('lostcrowdfoundApp')
-  .controller('ContactfinderCtrl', function (requestService, $location, ngToast) {
+  .controller('ContactfinderCtrl', function (requestService, $location, ngToast, currUser) {
 
     var vm = this;
 
@@ -17,7 +17,7 @@ angular.module('lostcrowdfoundApp')
     vm.description = '';
 
     vm.createRequest = function () {
-      requestService.addRequest(vm.description, 'test', vm.params.itemId)
+      requestService.addRequest(vm.description, currUser.userId() , vm.params.itemId)
       .then(function () {
         $location.path('/#');
         ngToast.create({
