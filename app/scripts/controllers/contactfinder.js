@@ -17,7 +17,7 @@ angular.module('lostcrowdfoundApp')
     vm.description = '';
 
     vm.createRequest = function () {
-      requestService.addRequest(vm.description, currUser.userId() , vm.params.itemId)
+      requestService.addRequest(vm.description, currUser.userId(), vm.params.itemId)
       .then(function () {
         $location.path('/#');
         ngToast.create({
@@ -25,6 +25,14 @@ angular.module('lostcrowdfoundApp')
           dismissOnClick: true,
           content: 'Request successfully created!',
         });
+      }, function (res) {
+        if (res.status === 403) {
+          ngToast.create({
+            className: 'danger',
+            dismissOnClick: true,
+            content: 'You already have an open or dismissed request for this item!',
+          });
+        }
       });
     }
   });
