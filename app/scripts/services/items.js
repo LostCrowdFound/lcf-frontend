@@ -24,7 +24,7 @@
         };
 
         this.addItem = function(type, brand, name, userId, lat, lon, date) {
-            $http.post(BASEURL + '/api/items', {
+            return $http.post(BASEURL + '/api/items', {
                 type: type,
                 brand: brand,
                 name: name,

@@ -20,6 +20,14 @@
             itemId: itemId,
           });
       };
+
+      this.getRequest = function(requestId) {
+          return $http.get(BASEURL + '/api/requests?_id=' + requestId, {
+              params: {
+                _id: requestId,
+              }
+          });
+      };
     }
 
     angular.module('lostcrowdfoundApp').service('requestService', requestService);

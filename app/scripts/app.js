@@ -77,7 +77,7 @@ app.config(function ($routeProvider, $httpProvider) {
         controller: 'ContactfinderCtrl',
         controllerAs: 'contactFinder'
       })
-      .when('/resolveRequest', {
+      .when('/resolveRequest/:requestId', {
         templateUrl: 'views/resolverequest.html',
         controller: 'ResolverequestCtrl',
         controllerAs: 'resolveRequest'
