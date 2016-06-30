@@ -5,7 +5,7 @@
         <div class="row">
             <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$error.required }">
                 <label for="type">Specify the type of your found item.</label>
-                <select class="form-control" ng-model="vm.typeSelection">
+                <select class="form-control" ng-model="vm.typeSelection" ng-change="vm.updateBrand()">
                     <option ng-repeat="type in vm.types">{{type}}</option>
                 </select>
             </div>
@@ -13,7 +13,7 @@
         <div class="row">
             <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$error.required }">
                 <label for="brand">What brand is it?</label>
-                <select class="form-control" ng-model="vm.brandSelection">
+                <select class="form-control" ng-model="vm.brandSelection" ng-change="vm.updateModel()">
                     <option ng-repeat="brand in vm.brands">{{brand}}</option>
                 </select>
             </div>
