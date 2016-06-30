@@ -26,18 +26,6 @@
                 </select>
             </div>
         </div>
-        <div class="row">
-            <div class="form-group col-md-6 col-sm-8 col-xs-10">
-                <label for="datePicker">When did you find it?</label>
-                <uib-datepicker ng-model="vm.date" datepicker-options="vm.dtOptions"></uib-datepicker>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="map">Where did you find it? Specify the location by dragging the marker around.</label>
-            <ng-map zoom="11" name="map" street-view-control="false" default-style="false">
-                <marker centered="true" draggable="true" position="{{vm.lat}}, {{vm.lon}}" on-dragend="vm.pos()"></marker>
-            </ng-map>
-        </div>
         <div class="form-actions">
             <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Submit</button>
             <a href="#/" class="btn btn-link">Cancel</a>

@@ -1,4 +1,22 @@
-<div ng-controller="ResolverequestCtrl as vm">
-
-<p>This is {{ vm.requestId }} view.</p>
+<div class="container">
+    <h2>Thank you for helping.</h2>
+    <p>Please check if this information is correct.</p>
+    <form name="form" ng-submit="vm.resolveRequest()" role="form" ng-controller="ResolverequestCtrl as vm">
+        <div class="row">
+            <div class="form-group col-md-6 col-sm-8 col-xs-10">
+                <label>Type</label><br>
+                <input disabled>{{vm.type}}</input><br>
+                <label>Brand</label><br>
+                <input disabled>{{vm.brand}}</input><br>
+                <label>Name</label><br>
+                <input disabled>{{vm.name}}</input><br>
+                <label>Rightful owner</label><br>
+                <input disabled>{{vm.owner}}</input><br>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Submit</button>
+            <a href="#/" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
 </div>

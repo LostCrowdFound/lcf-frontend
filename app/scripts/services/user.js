@@ -1,10 +1,12 @@
 'use strict';
 
 (function(){
-    function currUserService(BASEURL, $http, auth) {
+    function currUserService(BASEURL, $http, auth, $window) {
         this.loggedIn = auth.isAuthed;
-        this.logout   = auth.deleteToken;
-        var userId = '';
+        this.logout   = function() {
+          this.deleteUserId();
+          auth.deleteToken();
+        }
 
         this.register = function(user, email, pass) {
             return $http.post(BASEURL + '/signup', {
@@ -19,13 +21,17 @@
                 username: user,
                 password: pass
             }).success(function (data) {
-              userId = data.userId;
+              //$window.localStorage.userId = data.userId;
             });
         };
 
         this.userId = function() {
-          return userId;
-        }
+            return $window.localStorage.userId;
+        };
+
+        this.deleteUserId = function() {
+            $window.localStorage.removeItem('userId');
+        };
 
         this.getUser = function() {
             var token = auth.getToken();

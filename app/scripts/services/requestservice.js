@@ -22,10 +22,8 @@
       };
 
       this.getRequest = function(requestId) {
-          return $http.get(BASEURL + '/api/requests?_id=' + requestId, {
-              params: {
-                _id: requestId,
-              }
+          console.log(BASEURL + '/api/requests/' + requestId);
+          return $http.get(BASEURL + '/api/requests/' + requestId, {
           });
       };
     }

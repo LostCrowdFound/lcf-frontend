@@ -35,6 +35,11 @@
             });
         };
 
+        this.getItem = function(itemId) {
+            return $http.get(BASEURL + '/api/items/' + itemId, {
+            });
+        };
+
         this.getItemInfo= function() {
             return $http.get(BASEURL + '/api/itemInfo', {
             });
