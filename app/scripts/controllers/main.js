@@ -18,6 +18,7 @@ angular.module('lostcrowdfoundApp')
     $scope.loggedIn = loggedIn;
     if (!!loggedIn && !$scope.user) {
       $scope.user = currUser.getUser();
+      console.log($scope.user);
     }
   });
 

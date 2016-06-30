@@ -5,17 +5,17 @@
         <div class="row">
             <div class="form-group col-md-6 col-sm-8 col-xs-10">
                 <label>Type</label><br>
-                <input disabled>{{vm.type}}</input><br>
+                <input ng-model="vm.type" disabled /><br>
                 <label>Brand</label><br>
-                <input disabled>{{vm.brand}}</input><br>
+                <input ng-model="vm.brand" disabled /><br>
                 <label>Name</label><br>
-                <input disabled>{{vm.name}}</input><br>
+                <input ng-model="vm.name" disabled /><br>
                 <label>Rightful owner</label><br>
-                <input disabled>{{vm.owner}}</input><br>
+                <input ng-model="vm.owner" disabled /><br>
             </div>
         </div>
         <div class="form-actions">
-            <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Submit</button>
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-success">Resolve</button>
             <a href="#/" class="btn btn-link">Cancel</a>
         </div>
     </form>

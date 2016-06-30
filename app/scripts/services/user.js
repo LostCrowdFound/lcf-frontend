@@ -3,10 +3,11 @@
 (function(){
     function currUserService(BASEURL, $http, auth, $window) {
         this.loggedIn = auth.isAuthed;
-        this.logout   = function() {
-          this.deleteUserId();
-          auth.deleteToken();
-        }
+        this.logout   = auth.deleteToken;
+        //function() {
+          //this.deleteUserId();
+          //auth.deleteToken();
+        //}
 
         this.register = function(user, email, pass) {
             return $http.post(BASEURL + '/signup', {
@@ -25,13 +26,13 @@
             });
         };
 
-        this.userId = function() {
-            return $window.localStorage.userId;
-        };
-
-        this.deleteUserId = function() {
-            $window.localStorage.removeItem('userId');
-        };
+        // this.userId = function() {
+        //     return $window.localStorage.userId;
+        // };
+        //
+        // this.deleteUserId = function() {
+        //     $window.localStorage.removeItem('userId');
+        // };
 
         this.getUser = function() {
             var token = auth.getToken();
