@@ -34,6 +34,11 @@
                 date: date
             });
         };
+
+        this.getItemInfo= function() {
+            return $http.get(BASEURL + '/api/itemInfo', {
+            });
+        };
     }
 
     angular.module('lostcrowdfoundApp').service('itemsService', itemService);
