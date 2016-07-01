@@ -11,11 +11,9 @@
     function requestService(BASEURL, $http) {
       this.addRequest = function(description, userId, itemId) {
         return $http.post(BASEURL + '/api/requests', {
-          comments: [{
-            date: new Date(),
-            text: description,
-            userId: userId,
-          }],
+          date: new Date(),
+          text: description,
+          userId: userId,
           itemId: itemId,
           status: 'open',
         });

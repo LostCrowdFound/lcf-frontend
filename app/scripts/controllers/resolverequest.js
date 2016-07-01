@@ -8,39 +8,66 @@
  * Controller of the lostcrowdfoundApp
  */
 angular.module('lostcrowdfoundApp')
-  .controller('ResolverequestCtrl', function ($routeParams, currUser, $location, itemsService, requestService) {
+  .controller('ResolverequestCtrl', function ($routeParams, currUser, $location, itemsService, requestService, ngToast) {
 
     var vm = this;
 
-    if(!currUser.loggedIn()) {//|| currUser.userId()) {
-      $location.path('/login');
+    if(!currUser.loggedIn()) {
+      $location.path('#/login');
+      ngToast.create({
+        className: 'danger',
+        dismissOnClick: true,
+        content: 'You need to log in first!',
+      });
     }
-
-    console.log($routeParams.requestId);
 
     requestService.getRequest($routeParams.requestId)
       .then(function (request) {
         vm.request = request.data;
         console.log(vm.request);
-        vm.item = itemsService.getItem(vm.request.itemId).then(function (item) {
+        if(vm.request.status === 'resolved') {
+          $location.path('/#');
+          ngToast.create({
+            className: 'danger',
+            dismissOnClick: true,
+            content: 'Request already resolved!',
+          });
+        }
+        itemsService.getItem(vm.request.itemId).then(function (item) {
           vm.item = item.data;
-          console.log(vm.item);
+          var currUserId = currUser.getUser()._id;
+          if (!(currUserId === vm.item.userId)) {
+            $location.path('#/login');
+            ngToast.create({
+              className: 'danger',
+              dismissOnClick: true,
+              content: 'Permission denied! Wrong user!',
+            });
+          }
           vm.type = vm.item.type;
           vm.brand = vm.item.brand;
           vm.name = vm.item.name;
           vm.owner = currUser.getUser().username;
         });
-      }
-    );
+      });
 
     vm.resolveRequest = function () {
-      console.log('Trying to resolve request');
       requestService.resolveRequest($routeParams.requestId, currUser.getUser()._id)
-        .then(function (res) {
+        .then(function () {
+          ngToast.create({
+            className: 'success',
+            dismissOnClick: true,
+            content: 'Great! Request resolved!',
+          });
           $location.path('/#');
+        }, function (response) {
+          if (response.status === 403) {
+            ngToast.create({
+              className: 'danger',
+              dismissOnClick: true,
+              content: 'Permission denied! Wrong user!',
+            });
+          }
         });
     }
-
-    console.log(currUser.loggedIn());
-    console.log(currUser.getUser()._id);
   });

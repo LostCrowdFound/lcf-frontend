@@ -39,7 +39,7 @@ angular.module('lostcrowdfoundApp')
   vm.date = today;
 
   vm.radiusChanged = function() {
-    if(this.getRadius() > 1000) {
+    if(this.getRadius() > 15000) {
       ngToast.create({
         className: 'danger',
         dismissOnClick: true,

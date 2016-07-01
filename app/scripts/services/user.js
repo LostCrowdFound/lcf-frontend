@@ -4,10 +4,6 @@
     function currUserService(BASEURL, $http, auth, $window) {
         this.loggedIn = auth.isAuthed;
         this.logout   = auth.deleteToken;
-        //function() {
-          //this.deleteUserId();
-          //auth.deleteToken();
-        //}
 
         this.register = function(user, email, pass) {
             return $http.post(BASEURL + '/signup', {
@@ -21,18 +17,8 @@
             return $http.post(BASEURL + '/login', {
                 username: user,
                 password: pass
-            }).success(function (data) {
-              //$window.localStorage.userId = data.userId;
             });
         };
-
-        // this.userId = function() {
-        //     return $window.localStorage.userId;
-        // };
-        //
-        // this.deleteUserId = function() {
-        //     $window.localStorage.removeItem('userId');
-        // };
 
         this.getUser = function() {
             var token = auth.getToken();
