@@ -2,42 +2,41 @@
 
 /**
  * @ngdoc function
- * @name lostcrowdfoundApp.controller:ResolverequestCtrl
+ * @name lostcrowdfoundApp.controller:DismissrequestCtrl
  * @description
- * # ResolverequestCtrl
+ * # DismissrequestCtrl
  * Controller of the lostcrowdfoundApp
  */
 angular.module('lostcrowdfoundApp')
-  .controller('ResolverequestCtrl', function ($routeParams, currUser, $location, itemsService, requestService, ngToast, $window) {
-
+  .controller('DismissrequestCtrl', function ($routeParams, currUser, $location, itemsService, requestService, ngToast, $window) {
     var vm = this;
 
     if(!currUser.loggedIn()) {
-      $window.localStorage.redirect = 'resolveRequest/' + $routeParams.requestId;
+      $window.localStorage.redirect = 'dismissRequest/' + $routeParams.requestId;
       $location.path('/login');
       ngToast.create({
         className: 'danger',
         dismissOnClick: true,
         content: 'You need to log in first!',
       });
-    } else {
+    }
 
     requestService.getRequest($routeParams.requestId)
       .then(function (request) {
         vm.request = request.data;
-        if(vm.request.status === 'resolved') {
-          $location.path('/#');
+        if(vm.request.status !== 'open') {
+          $location.path('/');
           ngToast.create({
             className: 'danger',
             dismissOnClick: true,
-            content: 'Request already resolved!',
+            content: 'Request already closed!',
           });
         }
         itemsService.getItem(vm.request.itemId).then(function (item) {
           vm.item = item.data;
           var currUserId = currUser.getUser()._id;
-          if (currUserId !== vm.item.userId) {
-            $window.localStorage.redirect = 'resolveRequest/' + $routeParams.requestId;
+          if (!(currUserId === vm.item.userId)) {
+            $window.localStorage.redirect = 'dismissRequest/' + $routeParams.requestId;
             $location.path('/login');
             ngToast.create({
               className: 'danger',
@@ -51,15 +50,14 @@ angular.module('lostcrowdfoundApp')
           vm.owner = currUser.getUser().username;
         });
       });
-    }
 
-    vm.resolveRequest = function () {
-      requestService.resolveRequest($routeParams.requestId, currUser.getUser()._id)
+    vm.dismissRequest = function () {
+      requestService.dismissRequest($routeParams.requestId, currUser.getUser()._id)
         .then(function () {
           ngToast.create({
             className: 'success',
             dismissOnClick: true,
-            content: 'Great! Request resolved!',
+            content: 'Request dismissed succesfully!',
           });
           $location.path('/#');
         }, function (response) {

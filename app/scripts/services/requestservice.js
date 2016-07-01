@@ -20,17 +20,18 @@
       };
 
       this.getRequest = function(requestId) {
-        console.log(BASEURL + '/api/requests/' + requestId);
         return $http.get(BASEURL + '/api/requests/' + requestId, {
         });
       };
 
       this.resolveRequest = function(requestId, userId) {
-        console.log('Resolving request in service');
-        console.log('RequestId: ' + requestId);
-        console.log('userid: ' + userId);
-
         return $http.post(BASEURL + '/api/requests/resolve/' + requestId, {
+          userId: userId,
+        });
+      }
+
+      this.dismissRequest = function(requestId, userId) {
+        return $http.post(BASEURL + '/api/requests/dismiss/' + requestId, {
           userId: userId,
         });
       }

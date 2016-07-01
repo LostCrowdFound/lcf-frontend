@@ -29,7 +29,7 @@ app.config(['ngToastProvider', function(ngToast) {
     });
   }]);
 
-app.constant("BASEURL", "http://localhost:3000");
+app.constant('BASEURL', 'http://localhost:3000');
 app.config(function ($routeProvider, $httpProvider) {
     $routeProvider
       .when('/', {
@@ -39,7 +39,7 @@ app.config(function ($routeProvider, $httpProvider) {
       })
       .when('/about', {
         templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
+        //controller: 'AboutCtrl',
         controllerAs: 'about'
       })
       .when('/main', {
@@ -49,38 +49,43 @@ app.config(function ($routeProvider, $httpProvider) {
       })
       .when('/lostItem', {
         templateUrl: 'views/lostitem.html',
-        controller: 'LostitemCtrl',
+        //controller: 'LostitemCtrl',
         controllerAs: 'lostItem'
       })
       .when('/foundItem', {
         templateUrl: 'views/founditem.html',
-        controller: 'FounditemCtrl',
+        //controller: 'FounditemCtrl',
         controllerAs: 'foundItem'
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl',
+        //controller: 'LoginCtrl',
         controllerAs: 'login'
       })
       .when('/register', {
         templateUrl: 'views/register.html',
-        controller: 'RegisterCtrl',
+        //controller: 'RegisterCtrl',
         controllerAs: 'register'
       })
       .when('/logout', {
         templateUrl: 'views/main.html',
-        controller: 'LogoutCtrl',
+        //controller: 'LogoutCtrl',
         controllerAs: 'logout'
       })
       .when('/contactFinder', {
         templateUrl: 'views/contactfinder.html',
-        controller: 'ContactfinderCtrl',
+        //controller: 'ContactfinderCtrl',
         controllerAs: 'contactFinder'
       })
       .when('/resolveRequest/:requestId', {
         templateUrl: 'views/resolverequest.html',
-        controller: 'ResolverequestCtrl',
+        //controller: 'ResolverequestCtrl',
         controllerAs: 'resolveRequest'
+      })
+      .when('/dismissRequest/:requestId', {
+        templateUrl: 'views/dismissrequest.html',
+        //controller: 'DismissrequestCtrl',
+        controllerAs: 'dismissRequest'
       })
       .otherwise({
         redirectTo: '/'

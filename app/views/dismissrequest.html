@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Thank you for helping.</h2>
+    <p>Please check if this information is correct. <br>
+      Once the request is dismissed th</p>
+    <form name="form" ng-submit="vm.dismissRequest()" role="form" ng-controller="DismissrequestCtrl as vm">
+        <div class="row">
+            <div class="form-group col-md-6 col-sm-8 col-xs-10">
+                <label>Type</label><br>
+                <input ng-model="vm.type" disabled /><br>
+                <label>Brand</label><br>
+                <input ng-model="vm.brand" disabled /><br>
+                <label>Name</label><br>
+                <input ng-model="vm.name" disabled /><br>
+                <label>Supposed owner</label><br>
+                <input ng-model="vm.owner" disabled /><br>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-danger">Dismiss</button>
+            <a href="#/" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+</div>

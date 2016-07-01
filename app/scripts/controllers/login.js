@@ -8,13 +8,21 @@
  * Controller of the lostcrowdfoundApp
  */
 angular.module('lostcrowdfoundApp')
-    .controller('LoginCtrl', function ($scope, currUser, $location, ngToast) {
+    .controller('LoginCtrl', function ($scope, currUser, $location, ngToast, $window) {
         $scope.username = '';
         $scope.password = '';
 
         $scope.login = function() {
             currUser.login($scope.username, $scope.password).then(function () {
+              var redirect = $window.localStorage.redirect;
+              console.log('LOGIN' + redirect);
+              if(redirect !== '') {
+                console.log('there is a redirect');
+                $window.localStorage.removeItem('redirect');
+                $location.path('/' + redirect);
+              } else {
                 $location.path('/#');
+              }
                 ngToast.create({
                         className: 'success',
                         dismissOnClick: true,

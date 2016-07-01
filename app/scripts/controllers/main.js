@@ -8,7 +8,7 @@
 * Controller of the lostcrowdfoundApp
 */
 angular.module('lostcrowdfoundApp')
-.controller('MainCtrl', function ($scope, currUser, ngToast, $location) {
+.controller('MainCtrl', function ($scope, currUser, ngToast, $location, $window) {
 
   $scope.user = null;
 
@@ -18,7 +18,6 @@ angular.module('lostcrowdfoundApp')
     $scope.loggedIn = loggedIn;
     if (!!loggedIn && !$scope.user) {
       $scope.user = currUser.getUser();
-      console.log($scope.user);
     }
   });
 
@@ -35,6 +34,7 @@ angular.module('lostcrowdfoundApp')
     if($scope.loggedIn) {
       $location.path('/lostItem');
     } else {
+      $window.localStorage.redirect = 'lostItem';
       $location.path('/login');
       ngToast.create({
         className: 'danger',
@@ -48,6 +48,7 @@ angular.module('lostcrowdfoundApp')
     if($scope.loggedIn) {
       $location.path('/foundItem');
     } else {
+      $window.localStorage.redirect = 'foundItem';
       $location.path('/login');
       ngToast.create({
         className: 'danger',
