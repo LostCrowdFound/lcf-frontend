@@ -24,7 +24,7 @@ angular.module('lostcrowdfoundApp')
 
   vm.circleVisible = true;
   vm.markerVisible = false;
-  vm.radius = 1000;
+  vm.radius = 15000;
   vm.lat = 48.138370;
   vm.lon = 11.578553;
   vm.zoomToMarkers = false;
