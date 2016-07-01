@@ -18,6 +18,7 @@ angular.module('lostcrowdfoundApp')
     $scope.loggedIn = loggedIn;
     if (!!loggedIn && !$scope.user) {
       $scope.user = currUser.getUser();
+      console.log($scope.user);
     }
   });
 
@@ -33,6 +34,19 @@ angular.module('lostcrowdfoundApp')
   $scope.searchForItem = function() {
     if($scope.loggedIn) {
       $location.path('/lostItem');
+    } else {
+      $location.path('/login');
+      ngToast.create({
+        className: 'danger',
+        dismissOnClick: true,
+        content: 'You need to log in first!',
+      });
+    }
+  };
+
+  $scope.addFoundItem = function() {
+    if($scope.loggedIn) {
+      $location.path('/foundItem');
     } else {
       $location.path('/login');
       ngToast.create({

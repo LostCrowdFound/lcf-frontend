@@ -8,7 +8,7 @@
 * Controller of the lostcrowdfoundApp
 */
 angular.module('lostcrowdfoundApp')
-.controller('LostitemCtrl', function (NgMap, itemsService, ngToast, $location) {
+.controller('LostitemCtrl', function (NgMap, itemsService, ngToast, $location, currUser) {
 
   var map;
   var vm = this;
@@ -16,15 +16,15 @@ angular.module('lostcrowdfoundApp')
   NgMap.getMap().then(function(evtMap) {
     vm.map = evtMap;
   });
-  
+
     vm.types = ['Smartphone'];
     vm.brands = ['Apple', 'Samsung', 'Microsoft'];
     vm.models = ['iPhone 5s', 'iPhone 6', 'iPhone 5c'];
-  
-  
+
+
   vm.circleVisible = true;
   vm.markerVisible = false;
-  vm.radius = 1000;
+  vm.radius = 15000;
   vm.lat = 48.138370;
   vm.lon = 11.578553;
   vm.zoomToMarkers = false;
@@ -39,13 +39,14 @@ angular.module('lostcrowdfoundApp')
   vm.date = today;
 
   vm.radiusChanged = function() {
-    if(this.getRadius() > 1000) {
+    if(this.getRadius() > 15000) {
       ngToast.create({
         className: 'danger',
         dismissOnClick: true,
         content: 'Radius too big!',
       });
       vm.radius = 1000;
+      this.setRadius(vm.radius);
     } else {
       vm.radius = this.getRadius();
     }
@@ -65,7 +66,12 @@ angular.module('lostcrowdfoundApp')
   vm.items = [];
 
   vm.contactFinder = function () {
-    $location.path('/contactFinder');//.search({ id: vm.item._id });
+    $location.path('/contactFinder').search(
+      {
+        itemId: vm.item._id,
+        userId: currUser.userId,
+      }
+    );
   }
 
   vm.showContact = function(e, item) {

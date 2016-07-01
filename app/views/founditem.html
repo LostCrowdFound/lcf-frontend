@@ -3,9 +3,9 @@
     <p>Just fill out this form and wait to be contacted via E-Mail.</p>
     <form name="form" ng-submit="vm.addItem()" role="form" ng-controller="FounditemCtrl as vm">
         <div class="row">
-            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.username.$error.required }">
+            <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$error.required }">
                 <label for="type">Specify the type of your found item.</label>
-                <select class="form-control" ng-model="vm.typeSelection">
+                <select class="form-control" ng-model="vm.typeSelection" ng-change="vm.updateBrand()">
                     <option ng-repeat="type in vm.types">{{type}}</option>
                 </select>
             </div>
@@ -13,7 +13,7 @@
         <div class="row">
             <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$error.required }">
                 <label for="brand">What brand is it?</label>
-                <select class="form-control" ng-model="vm.brandSelection">
+                <select class="form-control" ng-model="vm.brandSelection" ng-change="vm.updateModel()">
                     <option ng-repeat="brand in vm.brands">{{brand}}</option>
                 </select>
             </div>
@@ -25,24 +25,6 @@
                     <option ng-repeat="model in vm.models">{{model}}</option>
                 </select>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6 col-sm-8 col-xs-10">
-                <label for="email">To be able to contact you, we need your E-Mail Address.</label>
-                <input type="text" name="email" id="email" class="form-control" ng-model="vm.email" required />
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6 col-sm-8 col-xs-10">
-                <label for="datePicker">When did you find it?</label>
-                <uib-datepicker ng-model="vm.date" datepicker-options="vm.dtOptions"></uib-datepicker>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="map">Where did you find it? Specify the location by dragging the marker around.</label>
-            <ng-map zoom="11" center="current-position" name="map" street-view-control="false" default-style="false">
-                <marker centered="true" draggable="true" position="{{vm.lat}}, {{vm.lon}}" on-dragend="vm.pos()"></marker>
-            </ng-map>
         </div>
         <div class="form-actions">
             <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Submit</button>

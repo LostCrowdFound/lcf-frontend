@@ -1,0 +1,22 @@
+<div class="container">
+    <h2>Thank you for helping.</h2>
+    <p>Please check if this information is correct.</p>
+    <form name="form" ng-submit="vm.resolveRequest()" role="form" ng-controller="ResolverequestCtrl as vm">
+        <div class="row">
+            <div class="form-group col-md-6 col-sm-8 col-xs-10">
+                <label>Type</label><br>
+                <input ng-model="vm.type" disabled /><br>
+                <label>Brand</label><br>
+                <input ng-model="vm.brand" disabled /><br>
+                <label>Name</label><br>
+                <input ng-model="vm.name" disabled /><br>
+                <label>Rightful owner</label><br>
+                <input ng-model="vm.owner" disabled /><br>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-success">Resolve</button>
+            <a href="#/" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+</div>

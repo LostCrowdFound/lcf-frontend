@@ -1,7 +1,7 @@
 'use strict';
 
 (function(){
-    function currUserService(BASEURL, $http, auth) {
+    function currUserService(BASEURL, $http, auth, $window) {
         this.loggedIn = auth.isAuthed;
         this.logout   = auth.deleteToken;
 

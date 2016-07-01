@@ -23,15 +23,25 @@
             });
         };
 
-        this.addItem = function(type, brand, name, email, lat,lon, date) {
-            $http.post(BASEURL + '/api/items', {
+        this.addItem = function(type, brand, name, userId, lat, lon, date) {
+            return $http.post(BASEURL + '/api/items', {
                 type: type,
                 brand: brand,
                 name: name,
-                email: email,
+                userId: userId,
                 lat: lat,
                 lon: lon,
                 date: date
+            });
+        };
+
+        this.getItem = function(itemId) {
+            return $http.get(BASEURL + '/api/items/' + itemId, {
+            });
+        };
+
+        this.getItemInfo= function() {
+            return $http.get(BASEURL + '/api/itemInfo', {
             });
         };
     }
