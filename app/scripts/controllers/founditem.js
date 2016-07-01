@@ -8,7 +8,7 @@
  * Controller of the lostcrowdfoundApp
  */
 angular.module('lostcrowdfoundApp')
-  .controller('FounditemCtrl', function (NgMap, itemsService, $location, ngToast) {
+  .controller('FounditemCtrl', function (NgMap, itemsService, $location, ngToast, currUser) {
 
     var map;
     var vm = this;
@@ -17,41 +17,48 @@ angular.module('lostcrowdfoundApp')
       map = evtMap;
   	});
 
-    vm.types = ['Smartphone'];
-    vm.brands = ['Apple', 'Samsung', 'Microsoft'];
-    vm.models = ['iPhone 5s', 'iPhone 6', 'iPhone 5c'];
+    vm.types = [];
+    vm.brands = [];
+    vm.models = [];
 
+    vm.itemInfos;
+    vm.brandInfos;
 
-/*    $scope.brandSelectionVisible = true;
-    $scope.nameSelectionVisible = true;
-
-    $scope.type = '';
-
-    $scope.getBrands = function() {
-      switch(type) {
-        case 'Smartphone':
-          return ['Apple, Samsung, Microsoft'];
-          break;
-        default:
-          $scope.brandSelectionVisible = false;
-          $scope.nameSelectionVisible = false;
+    itemsService.getItemInfo().then(function (itemInfos) {
+      vm.itemInfos = itemInfos.data;
+      var tempTypes = [];
+      for(var i = 0; i < vm.itemInfos.length; i++) {
+        tempTypes.push(vm.itemInfos[i].type);
       }
-    }*/
+      vm.types = tempTypes;
+    });
 
-/*    $scope.getNames = function() {
-      switch(brandSelection) {
-        case 'Apple':
-          $scope.names = ['iPhone 5s, iPhone 6, iPhone 5c'];
-          break;
-        case 'Samsung':
-          $scope.names = ['Galaxy S5, Galaxy S6'];
-          break;
-        case 'Microsoft':
-          $scope.names = ['Lumia 930,  Lumia 930 XL'];
-          break;
+    vm.updateBrand = function () {
+      vm.models = [];
+      vm.brands = [];
+      for (var i = 0; i < vm.itemInfos.length; i++) {
+        if (vm.itemInfos[i].type === vm.typeSelection) {
+          var tempBrands = [];
+          for(var j = 0; j < vm.itemInfos[i].brands.length; j++) {
+            tempBrands.push(vm.itemInfos[i].brands[j].brand);
+          }
+          vm.brands = tempBrands;
+          vm.brandInfos = vm.itemInfos[i].brands;
+          console.log(vm.brandInfos);
+        }
       }
-    }
-    */
+    };
+
+    vm.updateModel = function () {
+      for (var i = 0; i < vm.brandInfos.length; i++) {
+        if (vm.brandInfos[i].brand === vm.brandSelection) {
+          vm.models = vm.brandInfos[i].models;
+          console.log(vm.brandInfos);
+          return;
+        }
+      }
+    };
+
     var today = new Date();
     today.setHours(0,0,0,0);
 
@@ -62,7 +69,6 @@ angular.module('lostcrowdfoundApp')
     vm.date = today;
 
   	vm.name = '';
-  	vm.email = '';
 
     vm.lat = 48.138370;
     vm.lon = 11.578553;
@@ -75,7 +81,7 @@ angular.module('lostcrowdfoundApp')
     };
 
     vm.addItem = function() {
-  		itemsService.addItem(vm.typeSelection, vm.brandSelection, vm.modelSelection, vm.email, vm.lat, vm.lon, vm.date);
+  		itemsService.addItem(vm.typeSelection, vm.brandSelection, vm.modelSelection, currUser.userId(), vm.lat, vm.lon, vm.date);
       $location.path('/#');
       ngToast.create({
         className: 'success',
