@@ -53,6 +53,7 @@ angular.module('lostcrowdfoundApp')
     }
     */
     var today = new Date();
+    today.setHours(0,0,0,0);
 
     vm.dtOptions = {
       maxDate: today

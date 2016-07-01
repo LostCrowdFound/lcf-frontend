@@ -30,6 +30,7 @@ angular.module('lostcrowdfoundApp')
   vm.zoomToMarkers = false;
 
   var today = new Date();
+  today.setHours(0,0,0,0);
 
   vm.dtOptions = {
     maxDate: today
