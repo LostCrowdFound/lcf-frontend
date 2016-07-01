@@ -32,6 +32,12 @@
                 <uib-datepicker name="date" ng-model="vm.date" datepicker-options="vm.dtOptions" is-open="true"></uib-datepicker>
             </div>
         </div>
+        <div class="row" ng-show="vm.showAd">
+            <div class="form-group col-md-6 col-sm-8 col-xs-10">
+                <label for="ad">Sorry that we could'nt find your item... Maybe this might fit?</label>
+                <img src="../images/ad.png" />
+            </div>
+        </div>
         <div class="form-group">
             <label for="map">Specify the position where you lost it.<br>Just drag around the circle and adjust the radius!</label>
             <ng-map max-zoom="15" min-zoom="8" zoom="13" center="current-position" name="map" street-view-control="false" default-style="false">

@@ -21,6 +21,8 @@ angular.module('lostcrowdfoundApp')
     vm.brands = ['Apple', 'Samsung', 'Microsoft'];
     vm.models = ['iPhone 5s', 'iPhone 6', 'iPhone 5c'];
 
+    vm.showAd = false;
+
 
   vm.circleVisible = true;
   vm.markerVisible = false;
@@ -69,7 +71,7 @@ angular.module('lostcrowdfoundApp')
     $location.path('/contactFinder').search(
       {
         itemId: vm.item._id,
-        userId: currUser.userId,
+        userId: currUser.getUser()._id,
       }
     );
   }
@@ -87,12 +89,14 @@ angular.module('lostcrowdfoundApp')
       if(itemPositions.data.length === 0) {
         vm.circleVisible = true;
         vm.markerVisible = false;
+        vm.showAd = true;
         ngToast.create({
           className: 'danger',
           dismissOnClick: true,
           content: 'No items found :(',
         });
       } else {
+        vm.showAd = false;
         vm.markerVisible = true;
         vm.circleVisible = false;
         ngToast.create({
