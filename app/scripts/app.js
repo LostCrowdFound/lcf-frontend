@@ -87,6 +87,21 @@ app.config(function ($routeProvider, $httpProvider) {
         //controller: 'DismissrequestCtrl',
         controllerAs: 'dismissRequest'
       })
+      .when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'ContactCtrl',
+        controllerAs: 'contact'
+      })
+      .when('/importItems', {
+        templateUrl: 'views/importitems.html',
+        controller: 'ImportitemsCtrl',
+        controllerAs: 'importItems'
+      })
+      .when('/requestAd', {
+        templateUrl: 'views/requestad.html',
+        controller: 'RequestadCtrl',
+        controllerAs: 'requestAd'
+      })
       .otherwise({
         redirectTo: '/'
       });
