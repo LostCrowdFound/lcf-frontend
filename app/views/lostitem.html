@@ -5,7 +5,7 @@
         <div class="row">
             <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$error.required }">
                 <label for="type">Specify the type of your lost item.</label>
-                <select class="form-control" ng-model="vm.typeSelection" ng-change="vm.updateBrand()">
+                <select name="type" class="form-control" ng-model="vm.typeSelection" ng-change="vm.updateBrand()" ng-disabled="vm.typeDisabled">
                     <option ng-repeat="type in vm.types">{{type}}</option>
                 </select>
             </div>
@@ -13,15 +13,15 @@
         <div class="row">
             <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$error.required }">
                 <label for="brand">What brand is it?</label>
-                <select class="form-control" ng-model="vm.brandSelection" ng-change="vm.updateModel()">
+                <select name="brand" class="form-control" ng-model="vm.brandSelection" ng-change="vm.updateName()" ng-disabled="vm.brandDisabled">
                     <option ng-repeat="brand in vm.brands">{{brand}}</option>
                 </select>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-6 col-sm-8 col-xs-10" ng-class="{ 'has-error': form.email.$error.required }" required>
-                <label for="brand">Could you specify the model?</label>
-                <select name="brand" class="form-control" ng-model="vm.modelSelection">
+                <label for="name">Could you specify the model?</label>
+                <select name="name" class="form-control" ng-model="vm.modelSelection" ng-change="vm.changeName()" ng-disabled="vm.nameDisabled">
                     <option ng-repeat="model in vm.models">{{model}}</option>
                 </select>
             </div>

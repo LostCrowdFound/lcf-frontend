@@ -49,7 +49,7 @@ angular.module('lostcrowdfoundApp')
       }
     };
 
-    vm.updateModel = function () {
+    vm.updateName = function () {
       for (var i = 0; i < vm.brandInfos.length; i++) {
         if (vm.brandInfos[i].brand === vm.brandSelection) {
           vm.models = vm.brandInfos[i].models;

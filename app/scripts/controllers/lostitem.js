@@ -49,7 +49,7 @@ angular.module('lostcrowdfoundApp')
     }
   };
 
-  vm.updateModel = function () {
+  vm.updateName = function () {
     for (var i = 0; i < vm.brandInfos.length; i++) {
       if (vm.brandInfos[i].brand === vm.brandSelection) {
         vm.models = vm.brandInfos[i].models;
@@ -59,15 +59,17 @@ angular.module('lostcrowdfoundApp')
     }
   };
 
-    vm.showAd = false;
-
-
+  vm.showAd = false;
   vm.circleVisible = true;
   vm.markerVisible = false;
   vm.radius = 1000;
   vm.lat = 48.138370;
   vm.lon = 11.578553;
   vm.zoomToMarkers = false;
+
+  vm.typeDisabled = false;
+  vm.brandDisabled = false;
+  vm.nameDisabled = false;
 
   var today = new Date();
   today.setHours(0,0,0,0);
@@ -125,6 +127,9 @@ angular.module('lostcrowdfoundApp')
     itemsService.searchItems(vm.typeSelection, vm.brandSelection, vm.modelSelection, vm.lat, vm.lon, vm.radius, vm.date)
     .then(function (itemPositions) {
       if(itemPositions.data.length === 0) {
+        vm.typeDisabled = true;
+        vm.brandDisabled = true;
+        vm.nameDisabled = true;
         vm.circleVisible = true;
         vm.markerVisible = false;
         vm.showAd = true;
