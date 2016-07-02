@@ -17,16 +17,54 @@ angular.module('lostcrowdfoundApp')
     vm.map = evtMap;
   });
 
-    vm.types = ['Smartphone'];
-    vm.brands = ['Apple', 'Samsung', 'Microsoft'];
-    vm.models = ['iPhone 5s', 'iPhone 6', 'iPhone 5c'];
+  vm.types = [];
+  vm.brands = [];
+  vm.models = [];
+
+  vm.itemInfos;
+  vm.brandInfos;
+
+  itemsService.getItemInfo().then(function (itemInfos) {
+    vm.itemInfos = itemInfos.data;
+    var tempTypes = [];
+    for(var i = 0; i < vm.itemInfos.length; i++) {
+      tempTypes.push(vm.itemInfos[i].type);
+    }
+    vm.types = tempTypes;
+  });
+
+  vm.updateBrand = function () {
+    vm.models = [];
+    vm.brands = [];
+    for (var i = 0; i < vm.itemInfos.length; i++) {
+      if (vm.itemInfos[i].type === vm.typeSelection) {
+        var tempBrands = [];
+        for(var j = 0; j < vm.itemInfos[i].brands.length; j++) {
+          tempBrands.push(vm.itemInfos[i].brands[j].brand);
+        }
+        vm.brands = tempBrands;
+        vm.brandInfos = vm.itemInfos[i].brands;
+        console.log(vm.brandInfos);
+      }
+    }
+  };
+
+  vm.updateModel = function () {
+    for (var i = 0; i < vm.brandInfos.length; i++) {
+      if (vm.brandInfos[i].brand === vm.brandSelection) {
+        vm.models = vm.brandInfos[i].models;
+        console.log(vm.brandInfos);
+        return;
+      }
+    }
+  };
 
     vm.showAd = false;
 
 
   vm.circleVisible = true;
   vm.markerVisible = false;
-  vm.radius = 15000;
+  vm.radius = 1000;
   vm.lat = 48.138370;
   vm.lon = 11.578553;
   vm.zoomToMarkers = false;
@@ -41,7 +79,7 @@ angular.module('lostcrowdfoundApp')
   vm.date = today;
 
   vm.radiusChanged = function() {
-    if(this.getRadius() > 15000) {
+    if(this.getRadius() > 1000) {
       ngToast.create({
         className: 'danger',
         dismissOnClick: true,
