@@ -15,6 +15,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <base href="/">
   </head>
   <body ng-app="lostcrowdfoundApp">
     <toast></toast>
@@ -35,18 +36,18 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/"><img style="max-width:200px" src="../images/logo.png"></a>
+            <a class="navbar-brand" href="/"><img style="max-width:200px" src="../images/logo.png"></a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/">About</a></li>
-              <li><a ng-href="#/contact">Contact</a></li>
-              <li><a ng-href="#/login" ng-show="!loggedIn">Login</a></li>
-              <li><a ng-href="#/" ng-click="logout()" ng-show="loggedIn">Logout</a></li>
-              <li><a ng-href="#/register" ng-show="!loggedIn">Register</a></li>
+              <li class="active"><a href="/">Home</a></li>
+              <li><a ng-href="/">About</a></li>
+              <li><a ng-href="/contact">Contact</a></li>
+              <li><a ng-href="/login" ng-show="!loggedIn">Login</a></li>
+              <li><a ng-href="/" ng-click="logout()" ng-show="loggedIn">Logout</a></li>
+              <li><a ng-href="/register" ng-show="!loggedIn">Register</a></li>
             </ul>
         <!--  </div>-->
         </div>

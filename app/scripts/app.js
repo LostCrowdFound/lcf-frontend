@@ -30,7 +30,7 @@ app.config(['ngToastProvider', function(ngToast) {
   }]);
 
 app.constant('BASEURL', 'http://localhost:3000');
-app.config(function ($routeProvider, $httpProvider) {
+app.config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -106,7 +106,9 @@ app.config(function ($routeProvider, $httpProvider) {
         redirectTo: '/'
       });
 
-      $httpProvider.interceptors.push('reqErrInterceptor');
-        //auth interceptor
-      $httpProvider.interceptors.push('authInterceptor');
+    $locationProvider.html5Mode(true);
+
+    $httpProvider.interceptors.push('reqErrInterceptor');
+      //auth interceptor
+    $httpProvider.interceptors.push('authInterceptor');
   });
