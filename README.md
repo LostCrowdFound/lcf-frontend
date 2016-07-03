@@ -7,7 +7,7 @@ npm install && bower install
 
 ## Build & development
 
-Run `grunt` for building and `grunt serve` for preview.
+Run `npm build` for building and `npm start` for preview.
 
 ## Testing
 
