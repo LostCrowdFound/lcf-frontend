@@ -25,12 +25,6 @@ ng-map {
   border: none;
 }
 
-textarea {
-    display:block;
-    margin-bottom:1em;
-    resize: none;
-}
-
 form {
   margin-bottom: 30px;
 }
