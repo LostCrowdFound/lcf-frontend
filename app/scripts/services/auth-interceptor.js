@@ -40,6 +40,6 @@
     }
 
     angular.module('lostcrowdfoundApp')
-        .factory("authInterceptor", authInterceptor);
+        .factory('authInterceptor', authInterceptor);
 
 })();

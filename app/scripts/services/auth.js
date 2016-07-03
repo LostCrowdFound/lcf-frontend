@@ -1,7 +1,7 @@
 'use strict';
 
 (function() {
-    function authService($window) {
+    function AuthService($window) {
         var self = this;
         this.token = null;
 
@@ -30,6 +30,6 @@
     }
 
     angular.module('lostcrowdfoundApp')
-        .service('auth', authService);
+        .service('auth', AuthService);
 
 })();

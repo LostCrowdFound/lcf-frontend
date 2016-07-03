@@ -8,7 +8,7 @@
  * Service in the lostcrowdfoundApp.
  */
  (function(){
-    function itemService(BASEURL, $http) {
+    function ItemService(BASEURL, $http) {
         this.searchItems = function(type, brand, name, lat, lon, radius, date) {
             return $http.get(BASEURL + '/api/items', {
                 params: {
@@ -46,5 +46,5 @@
         };
     }
 
-    angular.module('lostcrowdfoundApp').service('itemsService', itemService);
+    angular.module('lostcrowdfoundApp').service('itemsService', ItemService);
 })();

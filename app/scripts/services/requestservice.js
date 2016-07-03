@@ -8,7 +8,7 @@
  * Service in the lostcrowdfoundApp.
  */
  (function(){
-    function requestService(BASEURL, $http) {
+    function RequestService(BASEURL, $http) {
       this.addRequest = function(description, userId, itemId) {
         return $http.post(BASEURL + '/api/requests', {
           date: new Date(),
@@ -37,5 +37,5 @@
       };
     }
 
-    angular.module('lostcrowdfoundApp').service('requestService', requestService);
+    angular.module('lostcrowdfoundApp').service('requestService', RequestService);
 })();

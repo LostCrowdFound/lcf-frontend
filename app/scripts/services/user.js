@@ -1,7 +1,7 @@
 'use strict';
 
 (function(){
-    function currUserService(BASEURL, $http, auth, $window) {
+    function CurrUserService(BASEURL, $http, auth) {
         this.loggedIn = auth.isAuthed;
         this.logout   = auth.deleteToken;
 
@@ -26,5 +26,5 @@
         };
     }
 
-    angular.module('lostcrowdfoundApp').service('currUser', currUserService);
+    angular.module('lostcrowdfoundApp').service('currUser', CurrUserService);
 })();
