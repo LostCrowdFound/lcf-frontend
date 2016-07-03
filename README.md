@@ -1,9 +1,9 @@
 # LostCrowdFund Frontend  [![Build Status](https://travis-ci.org/LostCrowdFound/lcf-frontend.svg?branch=master)](https://travis-ci.org/LostCrowdFound/lcf-frontend)
 
 ## Install
-``sh
+```sh
 npm install && bower install
-``
+```
 
 ## Build & development
 

@@ -21,8 +21,8 @@ angular.module('lostcrowdfoundApp')
     vm.brands = [];
     vm.models = [];
 
-    vm.itemInfos;
-    vm.brandInfos;
+    vm.itemInfos = null;
+    vm.brandInfos = null;
 
     itemsService.getItemInfo().then(function (itemInfos) {
       vm.itemInfos = itemInfos.data;

@@ -1,7 +1,6 @@
 'use strict';
 
-(function(){
-
+(function() {
     function authService($window) {
         var self = this;
         this.token = null;

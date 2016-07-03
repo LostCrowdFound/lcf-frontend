@@ -35,7 +35,7 @@ angular.module('lostcrowdfoundApp')
         itemsService.getItem(vm.request.itemId).then(function (item) {
           vm.item = item.data;
           var currUserId = currUser.getUser()._id;
-          if (!(currUserId === vm.item.userId)) {
+          if (currUserId !== vm.item.userId) {
             $window.localStorage.redirect = 'dismissRequest/' + $routeParams.requestId;
             $location.path('/login');
             ngToast.create({
@@ -69,5 +69,5 @@ angular.module('lostcrowdfoundApp')
             });
           }
         });
-    }
+    };
   });

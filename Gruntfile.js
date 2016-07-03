@@ -448,12 +448,13 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('test', [
+    'newer:jshint',
+    'newer:jscs',
     'clean:server',
     'wiredep',
     'concurrent:test',
     'postcss',
     'connect:test',
-    'karma'
   ]);
 
   grunt.registerTask('build', [
@@ -475,8 +476,6 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'newer:jshint',
-    'newer:jscs',
     'test',
     'build'
   ]);

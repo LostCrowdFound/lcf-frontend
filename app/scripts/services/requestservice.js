@@ -28,13 +28,13 @@
         return $http.post(BASEURL + '/api/requests/resolve/' + requestId, {
           userId: userId,
         });
-      }
+      };
 
       this.dismissRequest = function(requestId, userId) {
         return $http.post(BASEURL + '/api/requests/dismiss/' + requestId, {
           userId: userId,
         });
-      }
+      };
     }
 
     angular.module('lostcrowdfoundApp').service('requestService', requestService);

@@ -8,9 +8,7 @@
 * Controller of the lostcrowdfoundApp
 */
 angular.module('lostcrowdfoundApp')
-.controller('LostitemCtrl', function (NgMap, itemsService, ngToast, $location, currUser) {
-
-  var map;
+    .controller('LostitemCtrl', function (NgMap, itemsService, ngToast, $location, currUser) {
   var vm = this;
 
   NgMap.getMap().then(function(evtMap) {
@@ -21,8 +19,8 @@ angular.module('lostcrowdfoundApp')
   vm.brands = [];
   vm.models = [];
 
-  vm.itemInfos;
-  vm.brandInfos;
+  vm.itemInfos = null;
+  vm.brandInfos = null;
 
   itemsService.getItemInfo().then(function (itemInfos) {
     vm.itemInfos = itemInfos.data;
@@ -114,7 +112,7 @@ angular.module('lostcrowdfoundApp')
         userId: currUser.getUser()._id,
       }
     );
-  }
+  };
 
   vm.showContact = function(e, item) {
     vm.item = item;
