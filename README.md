@@ -1,7 +1,9 @@
-# lostcrowdfound
+# LostCrowdFund Frontend  [![Build Status](https://travis-ci.org/LostCrowdFound/lcf-frontend.svg?branch=master)](https://travis-ci.org/LostCrowdFound/lcf-frontend)
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+## Install
+``sh
+npm install && bower install
+``
 
 ## Build & development
 
@@ -9,4 +11,4 @@ Run `grunt` for building and `grunt serve` for preview.
 
 ## Testing
 
-Running `grunt test` will run the unit tests with karma.
+Running `npm test` will run the tests.
