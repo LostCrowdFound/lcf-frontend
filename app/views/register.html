@@ -17,9 +17,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-4 col-sm-6 col-xs-10" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
+                        <div class="form-group col-md-4 col-sm-6 col-xs-10" ng-class="{ 'has-error': form.email.$dirty && form.email.$invalid }">
                             <label for="username">E-Mail</label><br>
-                            <input class="form-control" type="text" name="email" id="email" class="form-control" ng-model="email" required />
+                            <input class="form-control" type="email" name="email" id="email" class="form-control" ng-model="email" required />
                         </div>
                     </div>
                 <div class="form-actions">
