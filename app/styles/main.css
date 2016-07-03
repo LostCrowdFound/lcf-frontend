@@ -44,3 +44,15 @@ form {
 .jumbo-three {
   background-image: url(../images/image_two.jpg);
 }
+
+#contact-partner {
+  margin: 0 -15px;
+}
+
+#contact-partner .col-lg-6 {
+  margin-bottom: 30px;
+}
+
+#contact-postal {
+  clear: both;
+}
