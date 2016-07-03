@@ -2,7 +2,7 @@
   "name": "lcf-frontend",
   "private": true,
   "devDependencies": {
-    "autoprefixer-core": "^6.0.1",
+    "autoprefixer": "^6.3.6",
     "grunt": "^1.0.1",
     "grunt-angular-templates": "^1.0.4",
     "grunt-concurrent": "^2.3.0",
