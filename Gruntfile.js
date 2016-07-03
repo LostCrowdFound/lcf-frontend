@@ -82,6 +82,7 @@ module.exports = function (grunt) {
           open: true,
           middleware: function (connect) {
             return [
+              modRewrite(['^[^\\.]*$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
@@ -93,7 +94,6 @@ module.exports = function (grunt) {
               ),
               connect.static(appConfig.app),
               // enable Angular's HTML5 mode
-              modRewrite(['^[^\\.]*$ /index.html [L]']),
             ];
           }
         }
