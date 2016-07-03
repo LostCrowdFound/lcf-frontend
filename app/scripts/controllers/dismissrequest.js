@@ -59,7 +59,7 @@ angular.module('lostcrowdfoundApp')
             dismissOnClick: true,
             content: 'Request dismissed succesfully!',
           });
-          $location.path('/#');
+          $location.path('/');
         }, function (response) {
           if (response.status === 403) {
             ngToast.create({

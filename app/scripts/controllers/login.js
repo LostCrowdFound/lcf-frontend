@@ -21,7 +21,7 @@ angular.module('lostcrowdfoundApp')
                 $window.localStorage.removeItem('redirect');
                 $location.path('/' + redirect);
               } else {
-                $location.path('/#');
+                $location.path('/');
               }
                 ngToast.create({
                         className: 'success',

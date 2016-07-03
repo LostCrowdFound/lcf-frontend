@@ -19,7 +19,7 @@ angular.module('lostcrowdfoundApp')
     vm.createRequest = function () {
       requestService.addRequest(vm.description, currUser.getUser()._id, vm.params.itemId)
       .then(function () {
-        $location.path('/#');
+        $location.path('/');
         ngToast.create({
           className: 'success',
           dismissOnClick: true,

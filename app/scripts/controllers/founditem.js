@@ -82,7 +82,7 @@ angular.module('lostcrowdfoundApp')
 
     vm.addItem = function() {
   		itemsService.addItem(vm.typeSelection, vm.brandSelection, vm.modelSelection, currUser.getUser()._id, vm.lat, vm.lon, vm.date);
-      $location.path('/#');
+      $location.path('/');
       ngToast.create({
         className: 'success',
         dismissOnClick: true,

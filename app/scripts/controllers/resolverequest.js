@@ -26,7 +26,7 @@ angular.module('lostcrowdfoundApp')
       .then(function (request) {
         vm.request = request.data;
         if(vm.request.status === 'resolved') {
-          $location.path('/#');
+          $location.path('/');
           ngToast.create({
             className: 'danger',
             dismissOnClick: true,
@@ -61,7 +61,7 @@ angular.module('lostcrowdfoundApp')
             dismissOnClick: true,
             content: 'Great! Request resolved!',
           });
-          $location.path('/#');
+          $location.path('/');
         }, function (response) {
           if (response.status === 403) {
             ngToast.create({
