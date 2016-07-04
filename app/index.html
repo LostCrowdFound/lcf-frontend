@@ -6,14 +6,14 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
+    <!-- build:css(.) /styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/ngToast/dist/ngToast.css" />
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/bower_components/ngToast/dist/ngToast.css" />
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- build:css(.tmp) /styles/main.css -->
+    <link rel="stylesheet" href="/styles/main.css">
     <!-- endbuild -->
     <base href="/">
   </head>
@@ -42,12 +42,12 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="/">Home</a></li>
-              <li><a ng-href="/">About</a></li>
-              <li><a ng-href="/contact">Contact</a></li>
-              <li><a ng-href="/login" ng-show="!loggedIn">Login</a></li>
-              <li><a ng-href="/" ng-click="logout()" ng-show="loggedIn">Logout</a></li>
-              <li><a ng-href="/register" ng-show="!loggedIn">Register</a></li>
+              <li ng-class="{ active: isActive('/')}"><a href="/">Home</a></li>
+              <li ng-class="{ active: isActive('/about')}"><a ng-href="/">About</a></li>
+              <li ng-class="{ active: isActive('/contact')}"><a ng-href="/contact">Contact</a></li>
+              <li ng-class="{ active: isActive('/login')}"><a ng-href="/login" ng-show="!loggedIn">Login</a></li>
+              <li ng-class="{ active: isActive('/logout')}"><a ng-href="/" ng-click="logout()" ng-show="loggedIn">Logout</a></li>
+              <li ng-class="{ active: isActive('/register')}"><a ng-href="/register" ng-show="!loggedIn">Register</a></li>
             </ul>
         <!--  </div>-->
         </div>
@@ -60,50 +60,50 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
-    <script src="bower_components/lodash/lodash.js"></script>
-    <script src="bower_components/markerclustererplus/src/markerclusterer.js"></script>
-    <script src="bower_components/google-maps-utility-library-v3-markerwithlabel/dist/markerwithlabel.js"></script>
-    <script src="bower_components/google-maps-utility-library-v3-infobox/dist/infobox.js"></script>
-    <script src="bower_components/google-maps-utility-library-v3-keydragzoom/dist/keydragzoom.js"></script>
-    <script src="bower_components/js-rich-marker/src/richmarker.js"></script>
-    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
-    <script src="bower_components/ngToast/dist/ngToast.js"></script>
-    <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="/bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src="/bower_components/lodash/lodash.js"></script>
+    <script src="/bower_components/markerclustererplus/src/markerclusterer.js"></script>
+    <script src="/bower_components/google-maps-utility-library-v3-markerwithlabel/dist/markerwithlabel.js"></script>
+    <script src="/bower_components/google-maps-utility-library-v3-infobox/dist/infobox.js"></script>
+    <script src="/bower_components/google-maps-utility-library-v3-keydragzoom/dist/keydragzoom.js"></script>
+    <script src="/bower_components/js-rich-marker/src/richmarker.js"></script>
+    <script src="/bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+    <script src="/bower_components/ngToast/dist/ngToast.js"></script>
+    <script src="/bower_components/ngmap/build/scripts/ng-map.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/lostitem.js"></script>
-        <script src="scripts/controllers/founditem.js"></script>
-        <script src="scripts/controllers/login.js"></script>
-        <script src="scripts/controllers/register.js"></script>
-        <script src="scripts/services/auth.js"></script>
-        <script src="scripts/services/user.js"></script>
-        <script src="scripts/services/auth-interceptor.js"></script>
-        <script src="scripts/services/items.js"></script>
-        <script src="scripts/services/reqerrinterceptor.js"></script>
-        <script src="scripts/controllers/contactfinder.js"></script>
-        <script src="scripts/services/requestservice.js"></script>
-        <script src="scripts/controllers/resolverequest.js"></script>
-        <script src="scripts/controllers/dismissrequest.js"></script>
-        <script src="scripts/controllers/contact.js"></script>
-        <script src="scripts/controllers/importitems.js"></script>
-        <script src="scripts/controllers/requestad.js"></script>
+        <script src="/scripts/app.js"></script>
+        <script src="/scripts/controllers/main.js"></script>
+        <script src="/scripts/controllers/about.js"></script>
+        <script src="/scripts/controllers/lostitem.js"></script>
+        <script src="/scripts/controllers/founditem.js"></script>
+        <script src="/scripts/controllers/login.js"></script>
+        <script src="/scripts/controllers/register.js"></script>
+        <script src="/scripts/services/auth.js"></script>
+        <script src="/scripts/services/user.js"></script>
+        <script src="/scripts/services/auth-interceptor.js"></script>
+        <script src="/scripts/services/items.js"></script>
+        <script src="/scripts/services/reqerrinterceptor.js"></script>
+        <script src="/scripts/controllers/contactfinder.js"></script>
+        <script src="/scripts/services/requestservice.js"></script>
+        <script src="/scripts/controllers/resolverequest.js"></script>
+        <script src="/scripts/controllers/dismissrequest.js"></script>
+        <script src="/scripts/controllers/contact.js"></script>
+        <script src="/scripts/controllers/importitems.js"></script>
+        <script src="/scripts/controllers/requestad.js"></script>
         <!-- endbuild -->
 </body>
 </html>
