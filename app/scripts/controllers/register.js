@@ -14,14 +14,21 @@ angular.module('lostcrowdfoundApp')
   $scope.password = '';
 
   $scope.register = function() {
-    console.log('Register user');
     currUser.register($scope.username, $scope.email, $scope.password).then(function () {
-      ngToast.create({
-        className: 'success',
-        dismissOnClick: true,
-        content: 'Registration successfull.',
+      currUser.login($scope.username, $scope.password).then(function () {
+        ngToast.create({
+          className: 'success',
+          dismissOnClick: true,
+          content: 'Registration successfull.',
+        });
+        $location.path('/');
+      }).catch(function() {
+        ngToast.create({
+          className: 'danger',
+          dismissOnClick: true,
+          content: 'An unknown error occured. please try again later.',
+        });
       });
-      $location.path('/login');
     }, function (response) {
       if (response.status === 400 || response.status === 500) {
         ngToast.create({
