@@ -4,6 +4,7 @@
   "curly": true,
   "eqeqeq": true,
   "esnext": true,
+  "jquery": true,
   "latedef": true,
   "noarg": true,
   "node": true,

@@ -1,1 +1,39 @@
-<p>This is the importItems view.</p>
+<div class="container" ng-controller="ImportitemsCtrl as vm">
+  <div class="bs-callout bs-callout-info" id="callout-type-dl-truncate">
+    <h4>Personal Assistance</h4>
+    <p>If you would like personal assistance, please contact us at <a href="mailto:partner@lostcrowdfound.com">partner@lostcrowdfound.com</a></br>
+    We are looking forward to present your items online - without a hassle or an extra cost for you!</p>
+  </div>
+
+  <!--<p>Please <a href="/register" title="Register">create an account</a> to use the mass import tool.</p>-->
+
+  <div class="col-lg-6 col-sm-6 col-12">
+    <h4>Upload CSV File</h4>
+    <p>If you already know how to export your data as CSV, you can upload it here.</br>
+    If you are interested in an automatic import or need help, please contact us.</p>
+    <p></p>
+    <div class="info-box-top">
+      Please use the following Schema (hover items for more info):
+    </div>
+    <div class="info-box-bottom">
+      <abbr title="Type (e.g. Smartphone, Keys)">type</abbr>, <abbr title="Brand or Manufacturer (e.g. Apple, Addidas)">brand</abbr>, <abbr title="Brand or Manufacturer (e.g. Apple, Addidas)">model</abbr>, <abbr title="Find date in format YYYY-MM-DD">date</abbr>, <abbr title="Latitude of find Location">latitude</abbr>, <abbr title="Longitude of find Location">longitude</abbr>
+    </div>
+    <div id="form-response">
+    </div>
+    <div id="form-upload">
+      <div class="form-group">
+        <div class="input-group">
+            <label class="input-group-btn">
+                <span class="btn btn-primary">
+                    Browse&hellip; <input type="file" id="csv-file" accept=".csv" onchange="$('#csv-filepath').val($(this).val().replace(/\\/g, '/').replace(/.*\//, ''))">
+                </span>
+            </label>
+            <input type="text" id="csv-filepath" class="form-control" disabled>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-default" ng-click="vm.uploadFile()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
