@@ -13,7 +13,7 @@ angular.module('lostcrowdfoundApp')
 
     vm.requestAd = function () {
       if(currUser.loggedIn()) {
-        $location.path('/requestAd');
+        $location.path('/contact/requestAd');
       } else {
         $window.localStorage.redirect = 'requestAd';
         $location.path('/login');
@@ -27,7 +27,7 @@ angular.module('lostcrowdfoundApp')
 
     vm.importItems = function () {
       if(currUser.loggedIn()) {
-        $location.path('/importItems');
+        $location.path('/contact/importItems');
       } else {
         $window.localStorage.redirect = 'importItems';
         $location.path('/login');

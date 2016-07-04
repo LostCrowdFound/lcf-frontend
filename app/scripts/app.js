@@ -92,12 +92,12 @@ app.config(function ($routeProvider, $locationProvider, $httpProvider) {
         controller: 'ContactCtrl',
         controllerAs: 'contact'
       })
-      .when('/importItems', {
+      .when('/contact/importItems', {
         templateUrl: 'views/importitems.html',
         controller: 'ImportitemsCtrl',
         controllerAs: 'importItems'
       })
-      .when('/requestAd', {
+      .when('/contact/requestAd', {
         templateUrl: 'views/requestad.html',
         controller: 'RequestadCtrl',
         controllerAs: 'requestAd'

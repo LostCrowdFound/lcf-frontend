@@ -10,6 +10,13 @@
 angular.module('lostcrowdfoundApp')
 .controller('MainCtrl', function ($scope, currUser, ngToast, $location, $window) {
 
+  $scope.isActive = function (viewLocation) {
+    if (viewLocation.length > 1) {
+      return $location.path().startsWith(viewLocation);
+    }
+    return $location.path() === viewLocation;
+  };
+
   $scope.user = null;
 
   $scope.$watch(function() {
