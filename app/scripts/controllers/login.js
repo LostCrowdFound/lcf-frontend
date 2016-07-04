@@ -15,9 +15,7 @@ angular.module('lostcrowdfoundApp')
         $scope.login = function() {
             currUser.login($scope.username, $scope.password).then(function () {
               var redirect = $window.localStorage.redirect;
-              console.log('LOGIN' + redirect);
               if(redirect !== '') {
-                console.log('there is a redirect');
                 $window.localStorage.removeItem('redirect');
                 $location.path('/' + redirect);
               } else {
