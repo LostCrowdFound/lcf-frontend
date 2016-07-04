@@ -21,12 +21,19 @@ angular.module('lostcrowdfoundApp')
     }
 
     $scope.sendRequest = function() {
-      $http.post(BASEURL + '/api/ads', {
-          header: $scope.inputHeader,
-          body: $scope.inputBody,
-          target: $scope.inputTarget,
-          keywords: $scope.inputKeywords,
-      })
+      var req = {
+          header: $scope.header,
+          body: $scope.body,
+          target: $scope.target,
+          keywords: $scope.keywords,
+      };
+      console.log(req);
+      if(req.header.length < 1 || req.body.length < 1 ||
+         req.target.length < 1 || req.keywords.length < 1) {
+        return; // do nothing when form not completely filled yet.
+      }
+
+      $http.post(BASEURL + '/api/ads', req)
       .success(function(){
         ngToast.create({
             className: 'success',
@@ -35,7 +42,7 @@ angular.module('lostcrowdfoundApp')
         });
         setResponse(
           true,
-          '<h5>Request sent</h5><p>Our staff will review the request and get in touch with you <br>Thank you!</p>'
+          '<h5>Request sent</h5><p>Our staff will review the request and get in touch with you.<br>Thank you!</p>'
         );
         jQuery('#form-request').remove();
       })
