@@ -78,3 +78,21 @@ form {
   border-radius: 0 0 4px 4px;
   background-color: #f7f7f9;
 }
+
+abbr {
+  text-decoration: none !important;
+  border-bottom: 1px dotted #777;
+}
+
+#form-response {
+  padding: 5px;
+}
+
+#csv-file {
+  display: none;
+}
+
+#csv-filepath {
+  height: auto;
+  cursor: default;
+}
