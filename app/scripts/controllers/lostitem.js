@@ -42,7 +42,6 @@ angular.module('lostcrowdfoundApp')
         }
         vm.brands = tempBrands;
         vm.brandInfos = vm.itemInfos[i].brands;
-        console.log(vm.brandInfos);
       }
     }
   };
@@ -51,7 +50,6 @@ angular.module('lostcrowdfoundApp')
     for (var i = 0; i < vm.brandInfos.length; i++) {
       if (vm.brandInfos[i].brand === vm.brandSelection) {
         vm.models = vm.brandInfos[i].models;
-        console.log(vm.brandInfos);
         return;
       }
     }
