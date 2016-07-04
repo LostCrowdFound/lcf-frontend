@@ -15,7 +15,6 @@ angular.module('lostcrowdfoundApp')
     $scope.inputKeywords = '';
 
     function setResponse(success, html) {
-      console.log(success);
       var cl = (success) ? 'bg-success' : 'bg-danger';
       jQuery('#form-response').removeClass().addClass(cl).html(html);
     }
@@ -27,7 +26,6 @@ angular.module('lostcrowdfoundApp')
           target: $scope.target,
           keywords: $scope.keywords,
       };
-      console.log(req);
       if(req.header.length < 1 || req.body.length < 1 ||
          req.target.length < 1 || req.keywords.length < 1) {
         return; // do nothing when form not completely filled yet.

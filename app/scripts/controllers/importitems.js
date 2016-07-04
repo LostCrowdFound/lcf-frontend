@@ -10,13 +10,11 @@
 angular.module('lostcrowdfoundApp')
   .controller('ImportitemsCtrl', function(BASEURL, $http, ngToast) {
     function setResponse(success, html) {
-      console.log(success);
       var cl = (success) ? 'bg-success' : 'bg-danger';
       jQuery('#form-response').removeClass().addClass(cl).html(html);
     }
 
     this.uploadFile = function() {
-      console.log('hi?');
       var fd = new FormData();
       fd.append('csv-file', document.getElementById('csv-file').files[0]);
 
