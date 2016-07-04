@@ -34,7 +34,7 @@ angular.module('lostcrowdfoundApp')
         });
         setResponse(
           true,
-          '<h5>Upload succesful</h5><p>Our staff will review the items and get in touch with you if there is any problem.<br≥Thank you!</p>'
+          '<h5>Upload succesful</h5><p>Our staff will review the items and get in touch with you if there is any problem.<br>Thank you!</p>'
         );
         jQuery('#form-upload').remove();
       })

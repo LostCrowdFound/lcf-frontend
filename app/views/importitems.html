@@ -25,7 +25,7 @@
         <div class="input-group">
             <label class="input-group-btn">
                 <span class="btn btn-primary">
-                    Browse&hellip; <input type="file" id="csv-file" accept=".csv" onchange="$('#csv-filepath').val($(this).val().replace(/\\/g, '/').replace(/.*\//, ''))">
+                    Browse&hellip; <input type="file" id="csv-file" accept=".csv" onchange="$('#csv-filepath').val($(this).val().replace(/\\/g, '/').replace(/.*\//, ''))" required>
                 </span>
             </label>
             <input type="text" id="csv-filepath" class="form-control" disabled>
